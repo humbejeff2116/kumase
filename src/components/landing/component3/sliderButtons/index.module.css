@@ -1,0 +1,117 @@
+.prevButton,
+.nextButton {
+    width: calc(var(--swiper-navigation-size) / 44 * 27);
+    height: var(--swiper-navigation-size);
+    /* z-index: 10; */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+
+    border: none;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    box-shadow: 1px 5px 5px 0 var(--text-color-opac-1);
+    background-color: var(--background-color);
+    transition: all 0.2s ease;
+}
+
+.disabled,
+.nextButton .disabled {
+    opacity: 0.35;
+    cursor: auto;
+    pointer-events: none;
+}
+
+.prevButton.swiper-button-hidden,
+.nextButton.swiper-button-hidden {
+    opacity: 0;
+    cursor: auto;
+    pointer-events: none;
+}
+
+.swiper-navigation-disabled .prevButton,
+.swiper-navigation-disabled .nextButton {
+    display: none !important;
+}
+
+.prevButton,
+.swiper-rtl .nextButton {
+    margin-right: 1rem;
+}
+
+.nextButton,
+.swiper-rtl .prevButton {
+    margin-right: 1rem;
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 1440px) {
+
+}
+
+@media only screen and (max-width: 1280px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 800px) {
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (max-width: 500px) {
+    .prevButton,
+    .nextButton {
+        width: 40px;
+        height: 40px;
+    }
+
+    .prevButton,
+    .swiper-rtl .nextButton {
+        left: var(--swiper-navigation-sides-offset, 0px);
+    }
+    .nextButton,
+    .swiper-rtl .prevButton {
+        right: var(--swiper-navigation-sides-offset, 0px);
+    }
+
+
+    .icon {
+        font-size: 1.1rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+}
+
+@media only screen and (max-width: 414px) {
+    
+}
+
+@media only screen and (max-width: 360px) {
+
+}
+
+@media only screen and (max-width: 320px) {
+
+}
+
+@media only screen and (max-width: 290px) {
+    
+}

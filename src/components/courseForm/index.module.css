@@ -1,0 +1,191 @@
+.container1 {
+    /* border: 1px solid yellow; */
+    position: relative;
+    padding: 1rem;
+    margin: 1rem auto;
+    border-radius: 8px;
+    box-shadow: inset 1px 4px 4px 0 var(--text-prim-opac-2);
+}
+
+.headingWrapper {
+    /* border: 1px solid green; */
+    /* padding: 0.5rem 0; */
+    display: grid;
+    grid-template-columns: 80% 20%;
+    background-color: #fdfdfd;
+    margin-bottom: 1rem;
+    /* gap: 0.5rem; */
+}
+
+.headingLeft {
+    /* border: 1px solid blue; */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.headingLogoWrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.headingLogoWrapper img {
+    /* border: 1px solid blue; */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.headingLogoText {
+
+}
+
+.headingRight  {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* border: 2px solid red; */
+}
+
+.userImageWrapper {
+    width: 50px;
+    height: 50px;
+    /* border: 2px solid red; */
+}
+
+.userImageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    border: 1px solid var(--border-prim);
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2); 
+}
+
+/* styles for user detail */
+
+.userDetailsWrapper {
+    /* border-top: 1px solid var(--border-prim);
+    border-bottom: 1px solid var(--border-prim); */
+    display: grid;
+    font-size: 0.8rem;
+}
+
+.userDetailCol {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border-prim);  
+}
+
+.userDetailCol:last-of-type {
+    border-bottom: none;  
+}
+
+.userDetail {
+    /* border: 1px solid yellow; */
+    display: inline-flex;
+    align-items: center;
+
+}
+.userDetail span {
+    margin-left: 0.2rem;
+    color: var(--prim-color);
+}
+
+.tableWRapper table {
+    border-collapse: collapse;
+    /* border: 2px solid red; */
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    width: 100%;
+    margin: 1rem 0;
+}
+  
+.tableWRapper caption {
+    caption-side: bottom;
+    padding: 8px;
+    font-weight: bold;
+  }
+  
+  .tableWRapper thead,
+  .tableWRapper tfoot {
+    width: 100%;
+    /* background-color: yellow; */
+    /* border: 5px solid green; */
+  }
+  
+
+  .tableHeading {
+    background-color: #fdfdfd;
+    /* font-size: 1rem; */
+  }
+
+  .tableWRapper th {
+    font-weight: bold;
+  }
+
+  .tableWRapper th,
+  .tableWRapper td {
+    border: 1px solid var(--prim-color);
+    padding: 10px 5px;
+  }
+  
+  .tableWRapper td:last-of-type {
+    text-align: center;
+  }
+  
+  .tableWRapper tbody > .tableWRapper tr:nth-of-type(even) {
+    /* background-color: rgb(237 238 242); */
+  }
+  
+  .tableWRapper tfoot th {
+    text-align: right;
+  }
+  
+  .tableWRapper tfoot td {
+    font-weight: bold;
+  }
+
+
+.signaturesWrapper {
+    border: 1px solid red;
+    display: none;
+}
+
+
+.signaturesTop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid red;
+    padding: 2rem;
+}
+
+.signaturesTopChild {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+}
+
+.signaturesBottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.signature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid red;
+    text-align: center;
+}
+
+.signatureName {
+
+}

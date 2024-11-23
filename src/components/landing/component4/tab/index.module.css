@@ -1,0 +1,109 @@
+.container {
+    /* border: 1px solid red; */
+    position: sticky;
+    top: var(--header-height);
+    /* padding: 2rem; */
+    padding-bottom: 0;
+    z-index: 2;
+    /* background: black; */
+}
+
+.child {
+    /* border: 1px solid green; */
+    display: flex;
+    /* justify-content: flex-end; */
+    background: var(--background-prim);
+    border-radius: 8px;
+    padding: 1rem 0;
+    /* border: 1px solid var(--border-sec); */
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
+}
+
+.button {
+    border-radius: 28px;
+    cursor: pointer; 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+    transition: all 0.3s ease;
+    /* border: 1px solid var(--border-sec); */
+    color: var(--text-prim-opac-6);
+    padding: 8px 14px;
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
+    background-color: #EDF2FA;
+}
+
+.button:hover {
+    background-color: var(--prim-color);
+    color: var(--background-prim);
+}
+
+.isActive {
+    background-color: var(--prim-color);
+    color: var(--background-prim);
+    /* border-color: var(--prim-color);; */
+    box-shadow: unset;
+    /* border: 2px solid green; */
+}
+
+.button.isActive:hover {
+    color: var(--background-prim);
+    text-decoration: none;
+}
+
+.icon {
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+}
+
+@media only screen and (max-width: 1440px) {
+
+}
+
+@media only screen and (max-width: 1280px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 800px) {
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (max-width: 500px) {
+
+}
+
+@media only screen and (max-width: 480px) {
+
+ 
+}
+
+@media only screen and (max-width: 414px) {
+    
+
+}
+
+@media only screen and (max-width: 360px) {
+
+
+}
+
+@media only screen and (max-width: 320px) {
+
+
+}
+
+@media only screen and (max-width: 290px) {
+   
+}

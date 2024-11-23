@@ -1,0 +1,12 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  // remove in dev
+  // "no-unused-vars": [
+  //   "error",
+  //   {
+  //     "ignoreRestSiblings": true,
+  //     "destructuredArrayIgnorePattern": "[A-Z]",
+  //     "caughtErrors": "none"
+  //   }
+  // ]
+}

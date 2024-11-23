@@ -1,0 +1,23 @@
+.container {
+    margin-top: 1rem;
+    /* border: 2px solid blue; */
+    position: relative;
+    z-index: 1;
+}
+
+.body {
+    /* border: 2px solid green; */
+    position: relative;
+    gap: 2rem;
+}
+
+.sliderButtons {
+    /* border: 1px solid green; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 1;
+}

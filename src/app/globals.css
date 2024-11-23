@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  
+  --prim-color: rgb(26, 115, 232);
+  --prim-color-opac-9: rgba(26, 115, 232, 0.9);
+  --prim-color-opac-8: rgba(26, 115, 232, 0.8);
+  --prim-color-opac-7: rgba(26, 115, 232, 0.7);
+  --prim-color-opac-6: rgba(26, 115, 232, 0.6);
+  --prim-color-opac-5: rgba(26, 115, 232, 0.5);
+
+  --sec-color: rgb(19, 182, 19);
+  --sec-color-opac-9: rgb(19, 182, 19, 0.9);
+  --sec-color-opac-8: rgb(19, 182, 19, 0.8);
+  --sec-color-opac-7: rgb(19, 182, 19, 0.7);
+  --sec-color-opac-6: rgb(19, 182, 19, 0.6);
+  --sec-color-opac-5: rgb(19, 182, 19, 0.5);
+   
+  --text-prim: rgb(0, 0, 0);
+  --text-prim-opac-9: rgb(0, 0, 0, 0.9);
+  --text-prim-opac-8: rgb(0, 0, 0, 0.8);
+  --text-prim-opac-7: rgb(0, 0, 0, 0.7);
+  --text-prim-opac-6: rgb(0, 0, 0, 0.6);
+  --text-prim-opac-5: rgb(0, 0, 0, 0.5);
+  --text-prim-opac-4: rgb(0, 0, 0, 0.4);
+  --text-prim-opac-3: rgb(0, 0, 0, 0.3);
+  --text-prim-opac-2: rgb(0, 0, 0, 0.2);
+  --text-prim-opac-1: rgb(0, 0, 0, 0.08);
+
+  --outline-prim: #c6c6c6;
+
+  --text-sec: #47484B;
+
+  --background-prim:  #ffffff;
+  --background-sec: #EDF2FA;
+
+  --border-prim: #d3d3d3;
+  --border-sec: #d3d3d3;
+
+  --error-color: rgb(151, 36, 36);
+  --error-background-color:#ffeaec; 
+  --error-border-color:rgb(250, 204, 204);
+  --error-border-color2: rgb(228, 94, 94);
+  --error-border-input: #ff7979;
+
+  --success-color: rgb(30, 163, 30);
+  --success-background-color:rgb(241, 255, 241);
+  --success-border-color: rgb(198, 255, 198);
+
+  --link-background: #e0e0e0;
+  --link-background-active: #e0e0e0; 
+
+  --button-prim: #ffffff;
+  --button-sec: #ffffff;
+
+  --landing-header-height: 4rem;
+  --mobile-header-height: 4rem;
+  --header-height: 5rem;
+  --sidebar-width: 20%;
+
+  --caret-color: var(--text-color);
+  --outline-color:rgb(60, 60, 136);
+  --box-shadow-color: rgba(117, 116, 116, 0.2);
+
+  --section-padding: 3rem;
+  --section-padding-mobile: 1rem;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+@media only screen and (max-width:500px) {
+
+  :root {
+    --section-padding: 1rem;
+  }
+
+}

@@ -1,0 +1,60 @@
+.container {
+    /* border: 1px solid red; */
+    display: flex;
+}
+
+.input {
+    padding: 10px 16px;
+    border-radius: 28px 0 0 28px;
+    /* border: 1px solid var(--border-prim); */
+    font-size: 1rem;
+    box-shadow: inset 1px 2px 2px 0 var(--text-prim-opac-2);
+}
+
+.input:focus {
+    border: 2px solid var(--prim-color);
+    outline: 2px solid var(--border-prim);
+}
+
+.inputError {
+    border: 2px solid rgb(255, 140, 159);
+    outline: 2px solid var(--prim-border-color);
+}
+
+.inputContains {
+    border: 2px solid rgb(0, 216, 0);
+    outline: 2px solid var(--prim-border-color);
+}
+
+.errorDisplay{
+
+}
+
+
+.buttonWrapper {
+    /* border: 1px solid green; */
+    /* margin-left: 1rem; */
+}
+
+.buttonWrapper button {
+    border: unset;
+    height: 100%;
+    padding: 10px 16px;
+    border-radius:  0 28px 28px 0;
+    background-color: var(--prim-color);
+    background-color: #EDF2FA;
+    /* color: var(--background-prim); */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
+    color: var(--prim-color);
+    /* font-weight: bold;  */
+}
+
+.subscribeIcon {
+    margin-right: 0.5rem;
+    font-size: 1.3rem;
+    color: var(--prim-color);
+}

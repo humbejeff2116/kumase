@@ -1,0 +1,24 @@
+.logoImgWrapper {
+    /* border:1px solid yellow; */
+    width: 100%;
+    /* height: 60px; */
+    display: flex;
+}
+
+.logoImgWrapper a {
+    display: flex;
+    /* border: 1px solid purple; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.logoImgWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    /* border: 1px solid purple; */
+}

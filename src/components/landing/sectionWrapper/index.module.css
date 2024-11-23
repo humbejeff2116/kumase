@@ -1,0 +1,111 @@
+.container {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+}
+
+.containerAdd {
+    border: 1px solid red;
+    padding: var(--section-padding);
+}
+
+
+.childWrapper {
+    /* border: 1px solid black; */
+    z-index: 1;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+    /* border-radius: 8px; */
+}
+
+.svgWrapper {
+    /* border: 1px solid blue; */
+    /* border-radius: 0 0 8px 8px; */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+
+.svg {
+    /* border: 1px solid green; */
+    display: block;
+    width: auto;
+    max-width: none;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 0.9;
+
+
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+}
+
+.flipSvg {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+
+
+@media only screen and (max-width: 1440px) {
+
+}
+
+@media only screen and (max-width: 1280px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 800px) {
+    .container {
+        padding: var(--section-padding-800);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (max-width: 500px) {
+    .container {
+        padding: var(--section-padding-mobile);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+}
+
+@media only screen and (max-width: 414px) {
+    
+}
+
+@media only screen and (max-width: 360px) {
+
+}
+
+@media only screen and (max-width: 320px) {
+
+}
+
+@media only screen and (max-width: 290px) {
+    
+}

@@ -1,0 +1,191 @@
+.container {
+    /* border: 1px solid var(--prim-border-color); */
+    box-shadow: 1px 5px 5px 0px var(--text-color-opac-1);
+    border-radius: 8px;
+    background-color: var(--background-color);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    
+}
+
+.container:hover {
+    /* outline: 2px solid var(--color); */
+    box-shadow: 1px 5px 5px 0 var(--text-color-opac-2);
+    transform: scale(1.01);
+}
+
+.imageWrapper {
+    border-bottom: 1px solid var(--prim-border-color);
+    height: 30vh;
+    border-radius: 8px 8px 0 0;
+}
+
+.imageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.body {
+    padding: 2rem;
+}
+
+.title {
+    border-bottom: 1px solid var(--prim-border-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    padding: 0.5rem 0;
+}
+
+.postOwnerProfileWrapper {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.profileContainer {
+    /* border: 1px solid green; */
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    /* font-size: 0.9rem; */
+    font-weight: 600;
+}
+
+.profileImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* border: 1px solid var(--color-opac-2); */
+}
+
+.profileImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* border: 1px solid green; */
+    border-radius: 50%;
+    border: 2px solid var(--text-color-opac-2);
+}
+
+.profileName {
+    /* border: 1px solid green; */
+    margin: 0 0.5rem;
+    padding: 0.4rem;
+    border-radius: 28px;
+    /* background-color: #f8f8f8; */
+}
+
+.profileDate {
+    display: flex;
+    align-items: center;
+    color: var(--text-color-opac-5);
+    font-weight: normal;
+}
+
+.profileIcon {
+    margin-right: 0.3rem;
+}
+
+
+.buttonsWrapper {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttonsWrapper button {
+    /* margin-left: 1rem; */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: var(--text-color);
+    color: var(--color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.buttonsWrapper button:hover {
+    /* transform: scale(1.02); */
+    box-shadow: 1px 3px 4px var(--prim-color);
+}
+
+.buttonsWrapper button:hover .buttonIcon {
+    transform: scale(1.1);
+}
+
+.buttonIcon {
+    font-size: 1.4rem;
+    transition: all 0.2s ease;
+}
+
+@media only screen and (max-width: 1440px) {
+
+}
+
+@media only screen and (max-width: 1280px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 800px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (max-width: 500px) {
+    .postOwnerProfileWrapper {
+        flex-wrap: wrap;
+        padding: 0.5rem 0;
+    }
+    
+    .profileContainer {
+        flex-wrap: wrap;
+    }
+
+    .profileDate {
+        margin: 0.5rem 0;
+    }
+
+    .buttonsWrapper {
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+}
+
+@media only screen and (max-width: 414px) {
+    
+}
+
+@media only screen and (max-width: 360px) {
+
+}
+
+@media only screen and (max-width: 320px) {
+
+}
+
+@media only screen and (max-width: 290px) {
+    
+}

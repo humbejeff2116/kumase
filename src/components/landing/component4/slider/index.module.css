@@ -1,0 +1,57 @@
+/* .slider {
+    min-height: 70vh;
+    border: 4px solid green;
+} */
+
+.sliderButtons {
+    /* border: 1px solid green; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 1;
+}
+
+.imageWrapper {
+    /* border: 1px solid green; */
+    /* width: 95%; */
+    margin-top: 1rem;
+    position: relative;
+    display: grid;
+    /* height: 100%; */
+    background: var(--background-prim);
+    border-radius: 8px;
+    /* box-shadow: 1px 3px 3px 0 var(--text-prim-opac-2); */
+    position: relative;
+}
+
+.imageWrapper img {
+    /* border: 1px solid red; */
+    object-fit: contain;
+    width: 100%;
+    /* height: 100%; */
+    border-radius: 8px;
+}
+
+.imageCaption {
+    /* border: 1px solid red; */
+    position: absolute;
+    bottom: 0;
+    /* left: 1rem; */
+    border-radius: 0 0 8px 8px;
+    padding: 1rem;
+    font-size: 1.2rem; 
+    /* font-weight: bold; */
+    width: 100%;
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    /* border-radius: 16px; */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    background: var(--background-prim);
+}

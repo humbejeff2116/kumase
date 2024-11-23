@@ -1,0 +1,109 @@
+.container {
+    /* border: 1px solid red; */
+    padding: 2rem;
+    /* min-height: 100vh; */
+}
+
+.childWrapper {
+    /* border: 1px solid blue; */
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
+    padding: 1rem;
+    border-radius: 28px;
+    background-color: var(--background-prim);
+    /* background: rgba(255, 255, 255, 0.5); */
+}
+
+.avatarContainer {
+    /* border: 1px solid purple; */
+    border-bottom: 1px solid var(--border-sec);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.avatarWrapper {
+    width: 90px;
+    height: 90px;
+    /* background-color: var(--active-link-bg-color); */
+    border: 3px solid var(--border-sec);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.avatarWrapper:hover {
+    border: 2px solid var(--prim-color-opac-4);
+}
+
+.avatarWrapper img {
+    border-radius: 50%; 
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* border: 1px solid var(--color); */
+}
+
+.userDetailsContainer {
+    /* border: 1px solid red; */
+}
+
+.userDetailsChild {
+    /* border: 2px solid yellow; */
+    border-bottom: 1px solid var(--border-sec);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem
+}
+
+.userDetailsChild:last-of-type {
+    border-bottom: none;
+}
+
+.userDetail {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.userDetail span {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    margin-right: 0.8rem;
+    color: var(--text-color-opac-7);
+}
+
+.detailButtonIcon {
+    font-size: 1rem;
+}
+
+.userDetailButtonWrapper {
+    /* border: 1px solid red; */
+}
+
+.userDetailButtonWrapper button {
+    color: var(--prim-color);
+    /* color: var(--text-prim-opac-7); */
+    width: 45px;
+    height: 45px;
+    padding: 1rem;
+    border-radius: 50%;
+    /* border: 1px solid var(--text-prim-opac-2); */
+    background-color: var(--background-prim);
+    /* background-color: #E2E4E6; */
+    box-shadow: inset 1px 2px 2px 0 var(--text-prim-opac-2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* .userDetailButtonWrapper button:hover {
+
+} */
+
+.detailButtonIcon {
+    font-size: 1.3rem;
+}

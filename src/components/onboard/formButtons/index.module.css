@@ -1,0 +1,22 @@
+.container {
+    /* border: 1px solid red; */
+    /* padding: 2rem; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.back, .next {
+    padding: 6px 12px;
+    border-radius: 28px;
+
+}
+
+.next {
+    background-color: var(--prim-color);
+    color: var(--background-prim);
+}
+
+.back{
+    border: 1px solid var(--prim-color);
+    color: var(--prim-color);
+}

@@ -1,0 +1,83 @@
+
+
+.navItem {
+    /* border: 1px solid green; */
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition:all 0.1s ease;
+    color: var(--text-prim-opac-6);
+    padding: 1rem 0.7rem;
+
+    height: 100%;
+    width: 100%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-bottom: 1px solid var(--border-prim);
+    border-left: 3px solid var(--background-prim);
+}
+
+.navLink:hover {
+    /* background-color: var(--active-link-bg-color); */
+    border-left: 3px solid var(--prim-color);
+    box-shadow: 1px 2px 2px var(--box-shadow-color);
+    border-radius: 0 28px 28px 0;
+    color: var(--prim-color);
+    background-color: var(--background-sec);
+}
+
+ .activeLink {
+    color: var(--prim-color);
+    background-color: var(--background-sec);
+    border-radius: 0 28px 28px 0;
+    border-left: 3px solid var(--prim-color);
+    box-shadow: 1px 2px 2px var(--box-shadow-color);
+    text-decoration: underline;
+}
+
+.iconWrapper {
+    /* border:1px solid red;  */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.icon {
+    font-size: 1.3rem;
+}
+
+
+/* styles for nav item 2 */
+.navItem2 {
+    border: 1px solid green;
+}
+
+.navLink2 {
+    display:flex;
+    align-items: center;
+    text-decoration: none;
+    transition:all 0.1s ease;
+    color: var(--text-color);
+    padding: 0.7rem;
+    /* border-radius: 0 28px 28px 0; */
+    height: 100%;
+    width: 100%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 1px solid red;
+    border-left: 3px solid var(--background-color);
+}
+
+.navLink2:hover {
+    text-decoration: underline;
+    color: var(--color);
+}
+
+.navItem2 > .activeLink2 {
+    text-decoration: underline;
+    color: var(--color);
+}
