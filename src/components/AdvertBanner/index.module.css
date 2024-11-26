@@ -1,0 +1,146 @@
+.closeButtonWrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.closeButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid var(--background-sec); */
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
+    color: var(--text-prim-opac-5);
+    margin: auto 0;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.closeIcon {
+    font-size: 1.3rem;
+}
+
+.closeButton:hover {
+    box-shadow: 1px 2px 2px 0 var(--prim-color);
+    color: var(--prim-color);
+}
+
+.container {
+    position: fixed;
+    padding: 2rem;
+    width: 52%;
+    border-radius: 8px;
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
+    background-color: var(--background-prim);
+    transition: bottom 1s;
+    -webkit-transition: bottom 1s;
+    font-style: oblique;
+    line-height: 1.6;
+
+    z-index: 3;
+    bottom: -100%;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    left: 2rem;
+}
+
+.showAdvert {
+    bottom: 2rem;
+    opacity: 1;
+}
+
+.container a {
+    color: var(--prim-color);
+
+}
+
+.advertWrapper {
+    /* border: 2px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .advertContent {
+} */
+
+.advertContent h3 {
+   color: firebrick;
+   font-weight: 550;
+   font-size: 1.15rem;
+}
+
+.advertContent p {
+    font-size: 1rem;
+    margin-top: 0.6rem;
+}
+
+
+.viewButtonWrapper {
+    display: flex;
+    /* justify-content: flex-end; */
+    margin-top: 0.6rem;
+}
+
+.viewButtonWrapper button {
+    background-color: var(--prim-color);
+    color: var(--background-prim);
+    padding: 8px 12px;
+    border-radius: 28px;
+}
+
+
+@media only screen and (max-width: 1440px) {
+
+}
+
+@media only screen and (max-width: 1280px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 800px) {
+    .container {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (max-width: 500px) {
+    .container {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+}
+
+@media only screen and (max-width: 414px) {
+    
+}
+
+@media only screen and (max-width: 360px) {
+
+}
+
+@media only screen and (max-width: 320px) {
+
+}
+
+@media only screen and (max-width: 290px) {
+    
+}
