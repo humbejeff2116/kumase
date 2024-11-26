@@ -18,19 +18,19 @@ const section10Data = {
         address: [
             {
                 icon: <RiMapPin2Fill/>,
-                content:"Adress location for KuchTech"
+                content:"Beside Jolua Hospital Wadata, Makurdi, Benue State."
             }
         ],
         email: [
             {
                 icon: <RiMailFill/>,
-                content:"hi@kuchtech.com"
+                content:"kuchtech01.com"
             }
         ],
         number: [
             {
                 icon: <RiPhoneFill/>,
-                content: "+234000000000"
+                content: "08136745730, 08020305855"
             }
         ]
     },

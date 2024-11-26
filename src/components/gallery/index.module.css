@@ -1,0 +1,181 @@
+@import 'https://fonts.googleapis.com/css?family=Oswald:300|Slabo+27px';
+
+:root {
+    --white: #ffffff;
+    --black: #333333;
+    --red: #e74c3c;
+    --transblack: rgba(66,66,66,0.7);
+    font-family: 'Slabo 27px';
+    font-size: 14px;
+	color: --black;
+}
+
+/* // Base Stuff inc responsive text */
+body, html, #app {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+/* // Tablet */
+@media screen and (min-width:768px) {
+	:root { 
+        font-size: 16px; 
+    }
+}
+/* // Desktop */
+@media screen and (min-width:1024px) {
+	:root { 
+        font-size: 18px; 
+    }
+}
+/* // Large Desktop */
+@media screen and (min-width:1440px){
+	:root { 
+        font-size: 23px; 
+    }
+}
+
+/* // Main Styles */
+.gallery {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	padding: 34px;
+}
+
+.galleryTile {
+	min-width: 200px;
+	max-width: 28vw;
+	margin: 0.25em;
+	overflow: hidden;
+	position: relative;
+	cursor: pointer;
+	
+}
+
+.galleryTile img {
+    width: 100%;
+    height: 100%;
+    transition: transform 300ms ease-in-out, filter 300ms ease-in-out;
+}
+.galleryTile .pictureInfo {
+    position: absolute;
+    z-index: 1;
+    color: var(--white);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out, 
+    filter 300ms ease-in-out;
+}
+
+.galleryTile .pictureInfo > * {
+    margin: 0.5rem 1.25rem;
+}
+
+.galleryTile .pictureInfo h2 {
+    font-family: 'Oswald';
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.galleryTile:hover img {
+    transform: scale(1.1);
+    filter: brightness(80%);
+}
+
+.galleryTile:hover .pictureInfo {
+    opacity: 1;
+}
+
+.imagevieWrapper {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imageview {
+	display: flex;
+	justify-content: center;
+}
+.imageview > * { 
+    margin: 3em; 
+}
+
+.imageviewImage {
+	width: 25em;
+	height: 25em;
+	box-shadow: 0 20px 40px -5px var(--transblack);
+}
+
+.imageviewInfo {
+	max-width: 260px;
+	text-align: right;
+	position: relative;
+}
+
+.imageviewInfo button {
+    font-family: 'Oswald';
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--red);
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -2em;
+    right: -1em;
+}
+
+.imageviewInfo button:hover  {
+    animation: swell 300ms ease-in-out;    
+}
+
+.imageviewInfo h2 {
+    font-family: 'Oswald';
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0;
+}
+
+.imageviewInfo h3 {
+    font-family: 'Oswald';
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.imageviewInfo ul {
+    list-style: none;
+}
+
+.fadeIn { 
+    animation: fade 300ms ease-in-out forwards; 
+}
+
+@keyframes fade {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes swell {
+	0% { transform: scale(1); }
+	50% { transform: scale(1.3); }
+	100% { transform: scale(1); }
+}
