@@ -11,7 +11,7 @@ interface ContactItem {
     icon: React.ReactElement
     content: string
 }
-const section10Data = {
+export const section10Data = {
     heading: "Contact Us",
     contact1: {
         place: "Nigeria",
@@ -24,7 +24,7 @@ const section10Data = {
         email: [
             {
                 icon: <RiMailFill/>,
-                content:"kuchtech01.com"
+                content:"kuchtech01@gmail.com"
             }
         ],
         number: [
@@ -68,7 +68,7 @@ export default function ContactUs() {
                             </h1>
                         </div>
                         <div className={styles.contactLinkWrapper}>
-                            <Link href={'/#'}>
+                            <Link href={appRoutes.contact}>
                                 Send us a message
                                 <MdArrowForwardIos className={styles.contactLinkIcon}/>
                             </Link>
@@ -87,17 +87,17 @@ interface ContactAddressProps {
     number: Array<ContactItem>
     email: Array<ContactItem> 
 }
-function ContactAddress({
-    heading,
+export function ContactAddress({
+    // heading,
     address,
     number,
     email   
 }: ContactAddressProps) {
     return (
         <div className={styles.contactAddressWrapper}>
-            <div className={styles.contactAddressHeading}>
+            {/* <div className={styles.contactAddressHeading}>
                 {heading}
-            </div>
+            </div> */}
 
             <div className={styles.contactAddressBody}>
             {address.map(({icon, content}, i) =>  

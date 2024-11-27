@@ -46,7 +46,7 @@
     border-radius: 8px;
     box-shadow: 1px 2px 2px var(--text-prim-opac-2);
     width: 100%;
-    background-color: var(--background-sec);
+    background-color: rgba(237, 242, 250, 0.5);
 }
 
 .contactAddressHeading {
@@ -104,7 +104,7 @@
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 1px 2px 2px var(--text-prim-opac-2);
-    background-color: var(--background-sec);
+    background-color: rgba(237, 242, 250, 0.5);
 }
 
 .contactHeadingWrapper {
