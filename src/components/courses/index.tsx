@@ -57,11 +57,7 @@ export default function Courses({
         childWrapperModifyClass={styles.sectionOneWrapper}
         showWave
         >
-            <div className={styles.headerWrapper}>
-                <h1 className={styles.header}>
-                Courses We Offer
-                </h1>
-            </div>
+           <Header text="Courses We Offer"/>
             <div className={styles.selectWrapper}>
                 <div className={styles.selectLeft}>
                     <IconContext.Provider value={{className: styles.selectIcon}}>
@@ -88,6 +84,18 @@ export default function Courses({
             />
         </LandingPageSectionWrapper>
 
+    )
+}
+
+export function Header({
+    text
+}: {text: string}) {
+    return (
+        <div className={styles.headerWrapper}>
+            <h1 className={styles.header}>
+            {text}
+            </h1>
+        </div>
     )
 }
 
