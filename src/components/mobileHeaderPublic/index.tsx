@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { IconContext } from 'react-icons';
 import { BiMenu, BiSearch } from "react-icons/bi";
 import Link from 'next/link';
-import logo from '@/images/logo/PNG/logo.png';
+import logo2 from '@/images/logo/JPG/kumase.jpg';
 import Image from 'next/image';
 import styles from './index.module.css';
 import LoginAndSignupLinks from './loginAndSignup';
@@ -75,7 +75,7 @@ function MobileMainLinks({
         <div className={styles.mainLinksContainer}>
             <div className={`${styles.mainLinksChild} ${styles.logo}`}>
                 <Link href={appRoutes.index}>
-                    <Image src={logo} alt={Org.name}/>
+                    <Image src={logo2} alt={Org.name}/>
                 </Link> 
             </div>
 
