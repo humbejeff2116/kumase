@@ -11,9 +11,11 @@ import {
 
 import { 
     RiBookReadLine, 
+    RiContactsLine, 
     RiHome3Line, 
     RiLockLine, 
     RiUser3Line, 
+    RiMapPin2Fill,
 } from "react-icons/ri";
 
 export interface NavLink {
@@ -70,7 +72,7 @@ export const publicLinks = {
         {
             name: "About",
             icon: (
-                <RiUser3Line/>
+                <RiContactsLine/>
             ),
             href: appRoutes.about
         },
@@ -80,6 +82,13 @@ export const publicLinks = {
                 <RiBookReadLine/>
             ),
             href: appRoutes.courses
+        },
+        {
+            name: "Contact",
+            icon: (
+                <RiMapPin2Fill/>
+            ),
+            href: appRoutes.contact
         },
     ],
     protectedMain: [
@@ -131,7 +140,7 @@ export const publicLinks = {
     publicSocialLinks: [
         { 
             name: "Instagram", 
-            href: "https://www.instagram.com/journeyboard.co?igsh=MW9tMnMxeG1vaGQ3eQ%3D%3D&utm_source=qr", 
+            href: "https://www.instagram.com/", 
             icon: (
                 <IconContext.Provider value={{className: ICON_CLASS_NAME}}>
                     <FaInstagramSquare/>
@@ -140,7 +149,7 @@ export const publicLinks = {
         },
         { 
             name: "Facebook", 
-            href: "https://www.facebook.com/share/KfMctTMNZKVcDp7s/?mibextid=LQQJ4d", 
+            href: "https://www.facebook.com/share/", 
             icon: (
                 <IconContext.Provider value={{className: ICON_CLASS_NAME}}>
                     <FaFacebookSquare/>
@@ -149,7 +158,7 @@ export const publicLinks = {
         },
         { 
             name: "Twitter", 
-            href: "https://x.com/journeyboard_co?s=21", 
+            href: "https://x.com/", 
             icon: (
                 <IconContext.Provider value={{className: ICON_CLASS_NAME}}>
                     <FaTwitter/>
@@ -158,7 +167,7 @@ export const publicLinks = {
         },
         { 
             name: "LinkedIn", 
-            href: "https://www.linkedin.com/company/journeyboard/", 
+            href: "https://www.linkedin.com/company/", 
             icon: (
                 <IconContext.Provider value={{className: ICON_CLASS_NAME}}>
                     <FaLinkedin/>
@@ -167,7 +176,7 @@ export const publicLinks = {
         },
         { 
             name: "Tik Tok", 
-            href: "https://www.tiktok.com/@journeyboard?_t=8mwLGb1u6JZ&_r=1", 
+            href: "https://www.tiktok.com/", 
             icon: (
                 <IconContext.Provider value={{className: ICON_CLASS_NAME}}>
                     <FaTiktok/>

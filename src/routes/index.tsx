@@ -8,6 +8,7 @@ const appRoutes = {
     index: '/',
     about: `/about`,
     courses: `/courses`,
+    contact: `/contact`,
     terms: `/terms`,
     privacy: `/privacy`,
     signIn: `/sign-in`,
