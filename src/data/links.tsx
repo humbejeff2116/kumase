@@ -15,7 +15,7 @@ import {
     RiHome3Line, 
     RiLockLine, 
     RiUser3Line, 
-    RiMapPin2Fill,
+    RiMapPin2Line,
 } from "react-icons/ri";
 
 export interface NavLink {
@@ -86,7 +86,7 @@ export const publicLinks = {
         {
             name: "Contact",
             icon: (
-                <RiMapPin2Fill/>
+                <RiMapPin2Line/>
             ),
             href: appRoutes.contact
         },
