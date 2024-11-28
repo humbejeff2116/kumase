@@ -4,12 +4,9 @@
     height: var(--landing-header-height);
     z-index: 22;
     transition: all 0.3s ease-in;
-    /* border-bottom: 1px solid var(--border-prim); */
     padding-left: 2rem;
     padding-right: 2rem;
-    /* background-color: #fdfdfd; */
     position: relative;
-    /* overflow: hidden; */
 }
 
 .absolute {
@@ -37,13 +34,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* padding-left: 2%; */
 }
 
 .logoImgWrapper {
     /* border:1px solid yellow; */
     width: 100%;
-    /* height: 60px; */
     display: flex;
 }
 
@@ -66,7 +61,6 @@
 }
 
 .mainNavigationContainer {
-    /* width: 100%; */
     /* border: 1px solid black; */
     display:flex;
 }
@@ -78,8 +72,6 @@
     margin: 0.5rem 0;
     padding: 0.7rem;
     border-radius: 28px;
-    /* justify-content: center; */
-    /* font-weight: 600; */
     background-color: var(--background-sec);
     box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
 }
@@ -87,7 +79,6 @@
 .mainNavItem {
     border-right: 1px solid var(--text-prim-opac-2);
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     min-width: 15%;
     /* border: 1px solid yellow; */
@@ -112,7 +103,6 @@
     /* border: 2px solid purple; */
     color: var(--text-prim-opac-6);
     font-size: 15px;
-    /* font-weight: 550; */
 }
 
 .navLink:hover{   
@@ -160,7 +150,6 @@
     /* border: 2px solid purple; */
     color: var(--text-color);
     font-size: 15px;
-    /* font-weight: 550; */
     background-color: inherit;
     font-family: inherit;
     margin: 0;
@@ -182,7 +171,6 @@
   
 /* Links inside the dropdown */
 .dropdownContent .navLink {
-    /* float: none; */
     color: var(--background-color);
     padding: 16px 0;
     text-decoration: none;
@@ -205,7 +193,6 @@
   
   /* Add a grey background color to dropdown links on hover */
 .dropdownContent .navLink:hover {
-    /* background-color: #ddd; */
     color: var(--color);
 }
   
@@ -215,21 +202,16 @@
 }
 
 .loginContainer {
-    /* width: 20%; */
     /* border: 1px solid red; */
     display: flex;
-    /* padding-right: 2%; */
-    /* justify-content: center; */
 }
 
 /* login items */
 .loginItems {
     display: flex;
-    /* flex-direction: column; */
     justify-content: flex-end;
     align-items: center;
     /* border: 1px solid red; */
-    /* width: 100%; */
 }
 
 .searchWrapper {
@@ -247,10 +229,8 @@
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    /* color: var(--prim-color);  */
     color: var(--text-prim-opac-6); 
     transition: all 0.2s ease;
-    /* font-weight: bold; */
     margin: 0 1rem;
 }
 
@@ -270,22 +250,17 @@
 .loginButton {
     height: 40px;
     cursor: pointer;
-    background-color: unset; 
-    /* color: var(--prim-color); */
-    color: var(--text-prim-opac-6);
-    /* border: 1px solid var(--text-prim-opac-2); */
-    background-color: var(--background-sec);
-    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
     border-radius: 28px; 
-    /* font-weight: bold; */
     transition: all 0.2s ease;
     padding: 4px 12px; 
     display: flex;
-    align-items: center;     
+    align-items: center; 
+    color: var(--background-prim);
+    background-color: var(--prim-color);
 }
 
 .loginIcon {
-    margin-left: 0.4rem;
+    margin-right: 0.4rem;
     font-size: 1.3rem;
 }
 
@@ -294,25 +269,15 @@
 }
 
 .loginButton:hover {
-    color: var(--prim-color);
     text-decoration: underline;       
 }
 
 .loginButtonActive {
-    color: var(--prim-color);
     text-decoration: underline;
-    /* box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2); */
-}
-
-.loginButtonActive:hover {
-    background-color: var(--color);
-    color: var(--background-color);
-    border: 1px solid var(--color-opac-2);
-    box-shadow: 1px 5px 5px var(--box-shadow-color);
 }
 
 /* styles for mobile nav */
-.mobileNavIcon{
+.mobileNavIcon {
     border:1px solid green;
     display: none;
     justify-content: center;

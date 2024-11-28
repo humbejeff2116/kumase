@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
-import { BiMenu, BiSearch } from "react-icons/bi";
+import { BiLogIn, BiMenu, BiSearch } from "react-icons/bi";
 import linksService, { NavLink, NavLinksType } from '@/data/links';
 import useNavContext from '@/context/navigation/context';
-import logo from '@/images/logo/PNG/logo.png';
-import logo2 from '@/images/logo/JPG/kumase.jpg';
+import logo from '@/images/logo/JPG/kumase.jpg';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import styles from './index.module.css';
@@ -57,7 +56,7 @@ export default function Header({
                 <section className={styles.logoContainer}>
                     <div  className={styles.logoImgWrapper}>
                         <Link href={appRoutes.index}>
-                            <Image src={logo2} alt='Kumase College of Health Technology '/>
+                            <Image src={logo} alt='Kumase College of Health Technology '/>
                             {/* {orgName} */}
                         </Link>
                     </div>
@@ -69,7 +68,7 @@ export default function Header({
 
             <section className={styles.loginContainer}>
                 <div className={styles.loginItems}>
-                    <div className={styles.searchWrapper}>
+                    {/* <div className={styles.searchWrapper}>
                         <Link 
                         href={appRoutes.search} 
                         title='Search'
@@ -79,15 +78,15 @@ export default function Header({
                                 <BiSearch/>
                             </IconContext.Provider>
                         </Link>
-                    </div>
+                    </div> */}
                     <button 
                     className={`${styles.loginButton} ${pathName === appRoutes.signIn && styles.loginButtonActive}`}
                     onClick={showLogin}
                     >
-                        Log In
                         <IconContext.Provider value={{className: styles.loginIcon}}>
-                         <CiLogin/>
+                            <BiLogIn/>
                         </IconContext.Provider>
+                        Portal
                     </button>
                     <MobileNavIcon/>
                 </div>
