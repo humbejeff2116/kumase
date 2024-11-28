@@ -3,7 +3,7 @@
 
 
 
-const basePath = '/home';
+const basePath = '/portal';
 const appRoutes = {
     index: '/',
     about: `/about`,
