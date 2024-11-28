@@ -4,8 +4,8 @@
 }
 
 .closeButton {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -30,14 +30,14 @@
 
 .container {
     position: fixed;
-    padding: 2rem;
+    padding: 1rem 2rem;
     width: 52%;
     border-radius: 8px;
     box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
     background-color: var(--background-prim);
     transition: bottom 1s;
     -webkit-transition: bottom 1s;
-    font-style: oblique;
+    /* font-style: oblique; */
     line-height: 1.6;
 
     z-index: 3;

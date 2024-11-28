@@ -76,7 +76,7 @@ export default function AdvertBanner({
                     {advertBannerData.p2}
                     {advertBannerData.contactNumbers.map((number, i) =>
                         <>
-                        <b key={i}>{number}</b>,{' '}
+                        <b key={i}>{number}{advertBannerData.contactNumbers.length !== (i + 1) && (<>, </>)}</b>
                         </>
                     )}
                     </p>
