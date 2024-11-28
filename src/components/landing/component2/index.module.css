@@ -89,9 +89,7 @@
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
-    /* background-color: var(--background-prim); */
-    background-color: #EDF2FA;
-    background: var(--background-prim);
+    background: rgba(255, 255, 255, 0.5);
     box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
 }
 
