@@ -1,6 +1,7 @@
 import { IconContext } from 'react-icons';
 import { 
     RiCalendarEventLine, 
+    RiGalleryLine, 
     RiSchoolLine 
 } from 'react-icons/ri';
 import styles from './index.module.css';
@@ -11,17 +12,20 @@ export const tabs = {
     school: 'school',
     events: 'events',
     reviews: 'reviews',
+    gallery: 'gallery'
 
 }
+
 interface TabProps {
     activeTab: string
     handleSetTab: (tabName: string) => void
 }
+
 export default function Tab({
     activeTab,
     handleSetTab
 }: TabProps) {
-    const { school, reviews, events } = tabs;
+    const { school, reviews, events, gallery } = tabs;
     return (
         <div className={styles.container}>
             <div className={styles.child}>
@@ -45,16 +49,16 @@ export default function Tab({
                     </IconContext.Provider>
                     School
                 </button>
-                {/* <button 
-                title={events} 
-                className={`${styles.button} ${activeTab === events && styles.isActive}`}
-                onClick={() => handleSetTab(events)}
+                <button 
+                title={gallery} 
+                className={`${styles.button} ${activeTab === gallery && styles.isActive}`}
+                onClick={() => handleSetTab(gallery)}
                 >
                     <IconContext.Provider value={{className: styles.icon}}>
-                        <RiCalendarEventLine/>
+                        <RiGalleryLine/>
                     </IconContext.Provider>
-                    Events
-                </button> */}
+                    Gallery
+                </button>
             </div>
         </div>
     )

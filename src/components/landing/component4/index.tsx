@@ -5,6 +5,7 @@ import Tab, { tabs } from './tab';
 import LandingPageSectionWrapper from '../sectionWrapper';
 import Reviews from '../reviews';
 import Slider from './slider';
+import Gallery from '@/components/gridGallery';
 
 
 
@@ -33,9 +34,7 @@ export default function Explore() {
             ) : activeTab === tabs.reviews ? (
                 <Reviews/>
             ) : (
-                <div>
-                    events
-                </div>
+                <Gallery/>
             )}
         </LandingPageSectionWrapper>
     )
