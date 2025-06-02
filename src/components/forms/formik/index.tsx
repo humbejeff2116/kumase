@@ -1,5 +1,5 @@
 import { Formik, Form } from 'formik';
-// import * as Yup from 'yup';
+import * as Yup from 'yup';
 import { TextInput, TextAreaInput, Select, PasswordInput, FileInput } from './components';
 import { InputChangeEvent } from '@/components/types/events';
 import { formInputType } from '@/components/types/form';
@@ -25,7 +25,7 @@ export function FormTemplate1({
     return (
         <Formik
         initialValues = {initial}
-        // validationSchema = {Yup.object(yupValidation)}
+        validationSchema = {Yup.object(yupValidation)}
         onSubmit = {handleSubmit}
         >
             <Form>
@@ -109,7 +109,7 @@ export default function FormTemplate({
     return (
         <Formik
         initialValues = {initial}
-        // validationSchema = {Yup.object(yupValidation)}
+        validationSchema = {Yup.object(yupValidation)}
         onSubmit = {handleSubmit}
         >
             <Form>
