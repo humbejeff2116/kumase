@@ -54,6 +54,13 @@ export const publicLinks = {
             href: appRoutes.profile
         },
         {
+            name: "Course Reg",
+            icon: (
+                <RiBookReadLine/>
+            ),
+            href: appRoutes.courseReg
+        },
+        {
             name: "Course Form",
             icon: (
                 <RiBookReadLine/>
