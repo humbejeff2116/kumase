@@ -56,6 +56,18 @@ export function SignUpLayout({
     );
 }
 
+export function AdminLayout({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
+    return (
+        <PublicLayout dontShowFooter>
+            {children}
+        </PublicLayout>
+    );
+}
+
 export default function RootLayout({
     children,
 }: Readonly<{
