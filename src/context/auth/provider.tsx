@@ -15,6 +15,7 @@ interface AuthContextProviderProps {
 }
 export function AuthContextProvider({children}: AuthContextProviderProps) {
     const [user, setUser] = useState(null);
+    const [student, setStudent] = useState(null);
     const [signingIn, setSigningIn] = useState(false);
     const [signingUp, setSigningUp] = useState(false);
     const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
@@ -34,9 +35,10 @@ export function AuthContextProvider({children}: AuthContextProviderProps) {
 
 
 
-    const setUserData = (user: any) => {
+    const setUserData = (user: any, student: any) => {
         saveToLocalStorage(USER, user);
         setUser(user);
+        setStudent(student);
     }
 
     const setTokenData = (token: string, tokenExpiration: number) => {
@@ -100,6 +102,7 @@ export function AuthContextProvider({children}: AuthContextProviderProps) {
         tokenExpiration: tokenExpiration,
         viewUserProfileData: viewUserProfileData,
         outsidePopUpMessage: outsidePopUpMessage,
+        student: student,
         setSigningIn: setSigningIn,
         setSigningUp: setSigningUp,
         setOutsidePopUpMessage: setOutsidePopUpMessage,

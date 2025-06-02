@@ -31,6 +31,30 @@ export interface User {
     email?: string
 }
 
+export interface Student {
+    [key: string]: any
+    _id: string
+    id: string
+    contactNumber?: string
+    profileImage?: string | StaticImageData
+    password?: string
+
+    title?: string
+    surname?: string
+    firstName?: string
+    otherName?: string
+    maritalStatus?: string
+    gender?: string
+    dateOfBirth?: string
+    nationality?: string
+    stateOfOrigin?: string
+    regNo?: string
+    department?: string
+    course?: string
+    level?: string
+    email?: string
+}
+
 export const userEnum: User = {
     title: 'Title',
     surname: 'Surname',
@@ -63,6 +87,7 @@ export const defaultOutsidePopupMessage: OutSidePopupMessage = {
 
 interface initialAuthContextType {
     user: User | null
+    student: Student | null
     signingIn: boolean
     signingUp: boolean
     userIsLoggedIn: boolean
@@ -73,7 +98,7 @@ interface initialAuthContextType {
     setSigningIn: (status: boolean) => void
     setSigningUp: (status: boolean) => void
     setOutsidePopUpMessage: (showMessage: boolean, popUpMessage?: OutSidePopupMessage) => void
-    setUserData: (user: any) => void
+    setUserData: (user: any, student: any) => void
     setUserIsLoggedIn: (isLoggedInd: boolean) => void
     setTokenData: (token: string, tokenExpiration: number) => void
     isAuthenticated: () => boolean
@@ -84,6 +109,7 @@ interface initialAuthContextType {
 
 const initialAuthContext: initialAuthContextType = {
     user: null,
+    student: null,
     signingIn: false,
     signingUp: false,
     userIsLoggedIn: false,
