@@ -73,27 +73,42 @@ const customFetchMethods = {
 }
 
 async function signupUser(userDetails: SignupDetails) {
-    const response =  await backendAPI.post(`/user/signup`, userDetails);
+    const response = await backendAPI.post(`/student/account/signup`, userDetails);
     return response.data;
 }
 
 async function loginUser(userDetails: LoginDetails) {
-    const response =  await backendAPI.post(`/user/signin`, userDetails);
+    const response = await backendAPI.post(`/student/account/signin`, userDetails);
     return response.data;
 }
 
 async function onboardUser(userId: string, userDetails: FormData) {
-    const response =  await backendAPI.post(`/user/onboard/${userId}`, userDetails);
+    const response = await backendAPI.post(`/student/onboard/${userId}`, userDetails);
     return response.data;
 }
 
+async function getStudentsSlugs(studentId?: string) {
+    try {
+        const response = await backendAPI.get(`/students/slugs/${studentId}`);
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return [];
+    }
+}
+
 async function getUser(userId: string) {
-    const response =  await backendAPI.get(`/user/${userId}`);
+    const response = await backendAPI.get(`/student/${userId}`);
+    return response.data;
+}
+
+async function getStudent(studentId: string) {
+    const response = await backendAPI.get(`/student/${studentId}`);
     return response.data;
 }
 
 async function authenticateUser(user: userAuth) {
-    const response = await backendAPI.post(`/user/auth`, user);
+    const response = await backendAPI.post(`/student/account/auth`, user);
     return response.data;
 }
 
@@ -105,6 +120,11 @@ interface userCookie {
 async function authenticateUserToken(userCookie: userCookie) {
     const response = await postData(`/auth-user-token`, userCookie);
     return response;
+}
+
+async function authenticateCourseReg(studentId: string) {
+    const response = await backendAPI.get(`/student/course-reg/authenticate/${studentId}`);
+    return response.data;
 }
 
 async function subscribeNewsLetter(details: SubscribeNewsLetter) {
@@ -134,5 +154,8 @@ export {
     authenticateUserToken,
     onboardUser,
     subscribeNewsLetter,
-    updateUserProfileImage
+    updateUserProfileImage,
+    authenticateCourseReg,
+    getStudentsSlugs,
+    getStudent
 }
