@@ -12,9 +12,9 @@ const defaultToken = '';
 const defaultTokenExpiration = 0;
 
 const mockStudent = {
-    _id: "dhfdf7888",
-    id: "dhfdf7888",
-    contactNumber: "dhfdf7888",
+    _id: "6708d68db98dddc68744d3dd",
+    id: "6708d68db98dddc68744d3dd",
+    contactNumber: "08145578967",
     profileImage: '',
     title: "Mr",
     surname: "John",
@@ -27,7 +27,7 @@ const mockStudent = {
     stateOfOrigin: "Benue",
     regNo: "KUCH/200/1988",
     department: "Community Health",
-    course: "Community Health Extension Worker (CHEW)",
+    course: "Community Health Extension Worker",
     level: '100',
     email: '',
     onboarded: true
