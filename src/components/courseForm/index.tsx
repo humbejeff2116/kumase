@@ -49,10 +49,10 @@ export default function CourseForm({
 
     return (
         <div className={styles.container1}>
-            <ProfileImageUpdater 
+            {/* <ProfileImageUpdater 
             show={showImageSelector}
             handleCLose={handleCLoseImageSelector}
-            />
+            /> */}
             <Heading/>
             {user && (
                 <UserDetails user={user}/>
