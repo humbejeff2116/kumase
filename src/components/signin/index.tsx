@@ -60,7 +60,8 @@ export default function Login() {
                 message,
                 token,
                 tokenExpiration,
-                data:user
+                data:user,
+                student
             } = await loginUser(values);
 
 
@@ -82,18 +83,18 @@ export default function Login() {
             }
 
             // Cookie.set(cookieKey, JSON.stringify(userCookie));
-            setUserData(user);
+            setUserData(user, student);
             setTokenData(TOKEN, TOKEN_EXPIRATION);
             setLoginError(false);
             setLoginIn(false);
             setLoginResponseMessage(message);
             setShowMessage(true);
-            if (!user.onboarded) {
-                timer = setTimeout(() => {
-                    router.push(appRoutes.onboard);
-                }, 2000); 
-                return;
-            }
+            // if (!user.onboarded) {
+            //     timer = setTimeout(() => {
+            //         router.push(appRoutes.onboard);
+            //     }, 2000); 
+            //     return;
+            // }
             timer = setTimeout(() => {
                 return (redirectTo && redirectTo !== appRoutes.signOut) ?
                 router.push(redirectTo) : router.push(appRoutes.home);
