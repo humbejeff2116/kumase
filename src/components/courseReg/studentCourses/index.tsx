@@ -1,13 +1,12 @@
 'use client';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import styles from './index.module.css';
-import { Course } from "@/data/courses/communityHealth";
+// import { Course } from "@/data/courses/communityHealth";
 import useAuth from '@/context/auth/context';
 import useCollegeContext from '@/context/college/context';
 import getCourseFormCourses from '@/data/courses';
 import logo from '@/images/logo/JPG/kumase.jpg';
 import Image from 'next/image';
-import { PrintFormButton } from '@/components/_courseForm/levelSelector';
 import { IconContext } from 'react-icons';
 import { BiPrinter } from 'react-icons/bi';
 import Link from 'next/link';
@@ -99,10 +98,6 @@ export default function StudentCourses() {
 
 
 function PrintCourseForm() {
-    const handlePrintForm = () => {
-
-    }
-    
     return (
         <div className={styles.printCourseFormWrapper}>
             <Link href={appRoutes.courseForm}>
