@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import useNavContext from '@/context/navigation/context';
 import Logo from './logo';
 import MiddleLeftSideBar from './middle';
@@ -30,7 +30,11 @@ export default function LeftSideBar({
         fixed ={fixed}
         logo={logo ?? <Logo/>}
         // top={top ?? <TopLeftSideBar/>}
-        middle={middle ?? <MiddleLeftSideBar/>}  
+        middle={middle ??
+            <Suspense fallback={<div>Loading... </div>}>
+                <MiddleLeftSideBar/>
+            </Suspense> 
+        }  
         // bottom={bottom ?? <BottomLeftSideBar/>} 
         />
     )
