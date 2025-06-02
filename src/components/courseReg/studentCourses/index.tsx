@@ -7,6 +7,11 @@ import useCollegeContext from '@/context/college/context';
 import getCourseFormCourses from '@/data/courses';
 import logo from '@/images/logo/JPG/kumase.jpg';
 import Image from 'next/image';
+import { PrintFormButton } from '@/components/_courseForm/levelSelector';
+import { IconContext } from 'react-icons';
+import { BiPrinter } from 'react-icons/bi';
+import Link from 'next/link';
+import appRoutes from '@/routes';
 
 
 export default function StudentCourses() {
@@ -24,6 +29,7 @@ export default function StudentCourses() {
 
     return (
 
+        <>
         <div className={styles.tableWRapper}>
             <div className={styles.schoolDetailsWrapper}>
                 <div className={styles.schoolDetailsLeft}>
@@ -82,6 +88,29 @@ export default function StudentCourses() {
                 )}
                 </tbody>
             </table>
+        </div>
+        {courses && (
+            <PrintCourseForm/>
+        )}
+        </>
+    )
+}
+
+
+
+function PrintCourseForm() {
+    const handlePrintForm = () => {
+
+    }
+    
+    return (
+        <div className={styles.printCourseFormWrapper}>
+            <Link href={appRoutes.courseForm}>
+                <IconContext.Provider value={{className: styles.buttonIcon}}>
+                    <BiPrinter/>
+                </IconContext.Provider>
+                Print Course Form
+            </Link>
         </div>
     )
 }
