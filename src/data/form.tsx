@@ -79,19 +79,19 @@ export const searchForm = {
 export const loginForm = {
     id: "1",
     initial: {
-        email: '',
+        regNo: '',
         password: '',
     },
     yupValidation: {
-        email: Yup.string().email("Email Address must be  valid").required('Email is required'),
+        regNo: Yup.string().required('Reg Number is required'),
         password: Yup.string().required('Password is required'),
     },
     formData: [
         {
             id:"1",
-            name: "email",
+            name: "regNo",
             type: formInputType.text,
-            label: "Email Address",
+            label: "RegNo",
             // dontShowErrorText: true,
         },
         {
@@ -142,7 +142,26 @@ export const signupForm = {
     ]
 }
 
-// data for landing page subcribe form
+
+export const studentTokenAuthForm = {
+    id: "1",
+    initial: {
+        token: '',
+    },
+    yupValidation: {
+        token: Yup.string().required('token is required'),
+    },
+    formData: [
+        {
+            id:"1",
+            name: "token",
+            type: formInputType.text,
+            placeholder: "Enter 12 digit token",
+            label: "Student Token",
+            // dontShowErrorText: true
+        }
+    ]
+}
 
 export const subscribeForm = {
     id: "1",
