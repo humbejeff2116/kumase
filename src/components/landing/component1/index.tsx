@@ -23,7 +23,7 @@ export default function Intro() {
         >
             <div className={styles.child}>
                 <h1>
-                    Kumase College Of Health Technology
+                    Kumase Coll<span>e</span>ge Of <span>Health</span> Technology
                 </h1>
                 <p>
                 Promoting health care devilery service through 

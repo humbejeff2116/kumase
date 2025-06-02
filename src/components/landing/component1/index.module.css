@@ -20,6 +20,10 @@
     line-height: 1.25;
 }
 
+.child h1 span {
+    color: var(--prim-color);
+}
+
 .child p {
     font-size: 1.2rem;
     line-height: 1.45;
