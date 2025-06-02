@@ -1,21 +1,44 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { AuthContext, OutSidePopupMessage, defaultOutsidePopupMessage } from './context';
+import { AuthContext, OutSidePopupMessage, Student, User, defaultOutsidePopupMessage } from './context';
 import { parseLocalStorage, saveToLocalStorage } from '@/lib';
 
 
 export const USER = 'user';
+export const STUDENT = 'student';
 const TOKEN = 'x-access-token';
 const TOKEN_EXPIRATION = 'x-access-token-expiration';
 const defaultToken = '';
 const defaultTokenExpiration = 0;
 
+const mockStudent = {
+    _id: "dhfdf7888",
+    id: "dhfdf7888",
+    contactNumber: "dhfdf7888",
+    profileImage: '',
+    title: "Mr",
+    surname: "John",
+    firstName: "Doe",
+    otherName: "N",
+    maritalStatus: "Single",
+    gender: "Male",
+    dateOfBirth: "4/05/2002",
+    nationality: "Nigeria",
+    stateOfOrigin: "Benue",
+    regNo: "KUCH/200/1988",
+    department: "Community Health",
+    course: "Community Health Extension Worker (CHEW)",
+    level: '100',
+    email: '',
+    onboarded: true
+}
+
 interface AuthContextProviderProps {
     children: React.ReactNode
 }
 export function AuthContextProvider({children}: AuthContextProviderProps) {
-    const [user, setUser] = useState(null);
-    const [student, setStudent] = useState(null);
+    const [user, setUser] = useState<User | null>(null);
+    const [student, setStudent] = useState<Student | null>(null);
     const [signingIn, setSigningIn] = useState(false);
     const [signingUp, setSigningUp] = useState(false);
     const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
@@ -24,13 +47,21 @@ export function AuthContextProvider({children}: AuthContextProviderProps) {
     const [viewUserProfileData, setViewUserProfileData] = useState({});
     const [tokenExpiration, setTokenExpiration] = useState(0);
    
+    // TODO... remove setStudent and un comment setStateLoad
     useEffect(()=> {
-        setStateOnload();
+        setStudent(mockStudent);
+        setUser(mockStudent);
+        // setStateOnload();
     }, []);
 
     const setStateOnload = () => {
         const user = parseLocalStorage(USER);
+        const student = parseLocalStorage(STUDENT);
         setUser(user);
+
+        if (student) {
+            setStudent(student);
+        }   
     }
 
 
