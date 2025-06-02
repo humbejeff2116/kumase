@@ -2,8 +2,7 @@
 
 
 
-
-const basePath = '/portal';
+const basePath = '/student/portal';
 const appRoutes = {
     index: '/',
     about: `/about`,
@@ -22,6 +21,7 @@ const appRoutes = {
     signOut: `${basePath}/sign-out`,
     search: `${basePath}/search`,
     courseForm: `${basePath}/course-form`,
+    courseReg: `${basePath}/course-reg`,
 }
 
 export default appRoutes;
