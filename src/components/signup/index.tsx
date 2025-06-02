@@ -58,7 +58,8 @@ export default function Signup() {
                 tokenExpiration,
                 userExist, 
                 message, 
-                data:user 
+                data:user,
+                student 
             } = await signupUser(values);
 
             if (error || userExist) {
@@ -79,7 +80,7 @@ export default function Signup() {
             // Cookie.set(cookieKey, JSON.stringify(userCookie));
 
             setCreatingAccountError(false);
-            setUserData(user);
+            setUserData(user, student);
             setTokenData(TOKEN, TOKEN_EXPIRATION);
             setCreatingAccount(false);
             setSigningUpResponseMessage(message);

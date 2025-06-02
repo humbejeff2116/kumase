@@ -114,6 +114,7 @@ function UserDetail({
                 </span>
                 {detail}
             </div>
+            
             <div className={styles.userDetailButtonWrapper}>
                 <button onClick={() => showEdit(detailName, detail)}>
                     <IconContext.Provider value={{className: styles.detailButtonIcon}}>
