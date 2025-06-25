@@ -12,10 +12,10 @@ interface CourseRegPageProps {
     params: Params
 }
 
-
+export const dynamic = 'force-dynamic';
 export async function generateStaticParams() {
     // try {
-        const params = await studentService.getStudentsSlugs(); 
+        const params = await studentService.getStudentsSlugs();
         return params;
     // } catch(err) {
     //     console.error(err);
