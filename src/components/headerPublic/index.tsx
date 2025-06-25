@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
@@ -39,6 +40,7 @@ export default function Header({
 
     const handleScroll = () => {
         const offset = window.scrollY;
+        
         if (offset > 60) {
            setScrolled(true);
         } else {
@@ -79,15 +81,16 @@ export default function Header({
                             </IconContext.Provider>
                         </Link>
                     </div> */}
-                    <button 
+                    <Link 
                     className={`${styles.loginButton} ${pathName === appRoutes.signIn && styles.loginButtonActive}`}
-                    onClick={showLogin}
+                    // onClick={showLogin}
+                    href={appRoutes.signIn}
                     >
                         <IconContext.Provider value={{className: styles.loginIcon}}>
                             <BiLogIn/>
                         </IconContext.Provider>
                         Portal
-                    </button>
+                    </Link>
                     <MobileNavIcon/>
                 </div>
             </section>
