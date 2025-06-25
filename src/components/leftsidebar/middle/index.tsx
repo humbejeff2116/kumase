@@ -1,5 +1,5 @@
 'use client';
-import linksService from '@/data/links';
+import linksService, { linkNames } from '@/data/links';
 import NavigationLink from '../navLink';
 import styles from './index.module.css';
 import useAuth from '@/context/auth/context';
@@ -18,7 +18,7 @@ export default function MiddleLeftSideBar() {
             )} */}
         {links.map((link, i) => {
 
-            if (link.name === "Course Reg") {
+            if (link.name === linkNames.private.courseReg || link.name === linkNames.private.courseForm) {
                 const newHref = `${link.href}/${student && encodeURIComponent(student.id || student._id)}`;
 
                 return (
