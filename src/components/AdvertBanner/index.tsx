@@ -10,7 +10,7 @@ import { IconContext } from 'react-icons';
 const advertBannerData = {
     heading: 'Admission! Admission!! Admission!!!',
     p1: `Kumase College of Health Technology is currently 
-    offering admissions for the 2024/2025 academic session.`,
+    offering admissions for the 2025/2026 academic session.`,
     buttonText: `Get more details`,
     p2: `For more enquiries call us on any of these numbers `,
     contactNumbers: ['08136745730', '09053837074',' 08030507188', '08113044072']
