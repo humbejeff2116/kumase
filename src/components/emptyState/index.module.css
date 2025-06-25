@@ -1,7 +1,7 @@
 
-.emptyContainer{
+.emptyContainer {
     /* border: 1px solid red; */
-    border-radius: 8px;
+    border-radius: 28px;
     min-height: 50vh;
     /* width: 60%; */
     margin: 2rem;
@@ -12,54 +12,55 @@
     box-shadow: 1px 5px 5px 1px var(--text-color-opac-1);
 }
 
-.emptyContentWrapper{
+.emptyContentWrapper {
     /* border: 1px solid yellow; */
     text-align: center;
     max-width: 30rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
-.emptyImageWrapper{
+.emptyImageWrapper {
     /* border: 1px solid blue; */
-    max-width: 7rem;
+    max-width: 6rem;
     margin: 0 auto;
 }
 
-.emptyImageWrapper img{
+.emptyImageWrapper img {
     /* border: 1px solid blue; */
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 8px;
 }
 
-.emptyHeader{
+.emptyHeader {
     /* border: 1px solid black; */
     color: var(--text-color);
-    margin:  0.4rem 0;
+    margin:  0.5rem 0;
     font-weight: 700;
     line-height: 120%;
-    font-size: 24px;
+    font-size: 22px;
     font-size: clamp(20px,4vw,24px);
 }
 
-.emptyBody{
+.emptyBody {
     /* border: 1px solid green; */
     color: var(--text-color-opac-5);
-    font-size: 1.2rem;
+    font-size: 1rem;
     max-width: 400px;
 }
 
 /* reload button styles */
-.reloadButtonContainer{
+.reloadButtonContainer {
     border: 1px solid green;
 }
 
-.reloadButtonWrapper{
+.reloadButtonWrapper {
  /* border: 1px solid red; */
     margin-top: 0.8rem;
 }
 
-.reloadButton{
+.reloadButton {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -77,17 +78,17 @@
     text-decoration: none;
 }
 
-.reloadButton span{
+.reloadButton span {
     /* border: 1px solid red; */
 }
 
-.reloadButtonIcon{
+.reloadButtonIcon {
     font-size: 1.3rem;
     margin-right: 0.4rem;
     vertical-align: middle;
     border: 1px solid red;
 }
 
-.reloadButton:hover{
+.reloadButton:hover {
     background-color: var(--color);
 }
