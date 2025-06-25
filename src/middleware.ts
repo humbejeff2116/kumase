@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { authenticateUser, authenticateAccountToken } from './services/services.http';
+import appRoutes from './routes';
  
 
 export const cookieKey = "loginCookie";
@@ -11,7 +12,7 @@ export async function middleware(req: NextRequest) {
     console.log('current user middleware', currentUser);
 
     if (!currentUser) {
-      return NextResponse.redirect(new URL('/login', req.url))
+      return NextResponse.redirect(new URL(appRoutes.signIn, req.url))
     }
 
     // get time in seconds
@@ -19,7 +20,7 @@ export async function middleware(req: NextRequest) {
 
     if (currTime > JSON.parse(currentUser).jwtExpireAt) {
       req.cookies.delete(cookieKey);
-      const response = NextResponse.redirect(new URL('/login', req.url));
+      const response = NextResponse.redirect(new URL(appRoutes.signIn, req.url));
       response.cookies.delete(cookieKey);
       return response; 
     }
@@ -28,11 +29,11 @@ export async function middleware(req: NextRequest) {
       const authenticateUserResponse = await authenticateAccountToken(JSON.parse(currentUser));
 
       if (!authenticateUserResponse) {
-        return NextResponse.redirect(new URL('/login', req.url));
+        return NextResponse.redirect(new URL(appRoutes.signIn, req.url));
       }
       
       if (authenticateUserResponse.status !== 200 && authenticateUserResponse.authenticated) {
-        return NextResponse.redirect(new URL('/login', req.url));
+        return NextResponse.redirect(new URL(appRoutes.signIn, req.url));
       }
     } catch(err) {
       console.log(err);
