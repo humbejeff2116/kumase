@@ -1,0 +1,13 @@
+{
+"extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "script_build",
+    "allowImportingTsExtensions": false,
+    "noEmit": false
+  },
+  "include": ["script/**/*.ts"],
+  "exclude": ["node_modules", ".next"],
+  "lib": ["es2015"]
+}
