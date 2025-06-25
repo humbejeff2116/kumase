@@ -73,12 +73,12 @@ const customFetchMethods = {
 }
 
 async function signupUser(userDetails: SignupDetails) {
-    const response = await backendAPI.post(`/student/account/signup`, userDetails);
+    const response = await backendAPI.post(`/student/account/sign-up`, userDetails);
     return response.data;
 }
 
 async function loginUser(userDetails: LoginDetails) {
-    const response = await backendAPI.post(`/student/account/signin`, userDetails);
+    const response = await backendAPI.post(`/student/account/sign-in`, userDetails);
     return response.data;
 }
 
@@ -97,13 +97,13 @@ async function getStudentsSlugs(studentId?: string) {
     }
 }
 
-async function getUser(userId: string) {
-    const response = await backendAPI.get(`/student/${userId}`);
-    return response.data;
-}
+// async function getUser(userId: string) {
+//     const response = await backendAPI.get(`/student/${userId}`);
+//     return response.data;
+// }
 
-async function getStudent(studentId: string) {
-    const response = await backendAPI.get(`/student/${studentId}`);
+async function getStudent(idOrRegNo: string, queryType: 'id' | 'regNo') {
+    const response = await backendAPI.get(`/student?id=${idOrRegNo}&queryType=${queryType}`);
     return response.data;
 }
 
@@ -117,13 +117,13 @@ interface userCookie {
     jwtExpireAt: number 
     id: string
 }
-async function authenticateUserToken(userCookie: userCookie) {
-    const response = await postData(`/auth-user-token`, userCookie);
+async function authenticateAccountToken(userCookie: userCookie) {
+    const response = await postData(`/student/account/auth`, userCookie);
     return response;
 }
 
 async function authenticateCourseReg(studentId: string) {
-    const response = await backendAPI.get(`/student/course-reg/authenticate/${studentId}`);
+    const response = await backendAPI.get(`/student/course/authenticate/${studentId}`);
     return response.data;
 }
 
@@ -132,10 +132,10 @@ async function subscribeNewsLetter(details: SubscribeNewsLetter) {
     return response.data;
 }
 
-async function updateUserProfileImage(userId: string, profileImageData: FormData) {
+async function updateUserProfileImage(accountId: string, studentId: string, profileImageData: FormData) {
     try {
         const response = await backendAPI.post(
-            `/user/update/profileImage/${userId}`,
+            `/student/uploads/profile/${accountId}/${studentId}`,
             profileImageData,
             {headers: {"Content-Type": "multipart/form-data"}}
         );
@@ -145,17 +145,23 @@ async function updateUserProfileImage(userId: string, profileImageData: FormData
     }
 }
 
+async function getSchool() {
+    const response = await backendAPI.get(`/school`);
+    return response.data;
+}
+
 
 export {
     loginUser,
     signupUser,
-    getUser,
+    // getUser,
     authenticateUser,
-    authenticateUserToken,
+    authenticateAccountToken,
     onboardUser,
     subscribeNewsLetter,
     updateUserProfileImage,
     authenticateCourseReg,
     getStudentsSlugs,
-    getStudent
+    getStudent,
+    getSchool
 }
