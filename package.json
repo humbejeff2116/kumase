@@ -9,7 +9,6 @@
     "build": "next build",
     "start": "next start",
     "test": "echo \"Error: no test specified\" && exit 1",
-
     "dev1:custom": "NODE_OPTIONS='--loader ts-node/esm' ts-node --project tsconfig.server.json api/index.ts",
     "dev:custom": "npx ts-node --esm --project tsconfig.server.json api/index.ts",
     "build:custom": "next build && rimraf ./dist && tsc --project tsconfig.script.json",
@@ -30,6 +29,7 @@
     "express-validator": "^7.2.0",
     "formik": "^2.4.6",
     "helmet": "^8.0.0",
+    "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.0",
     "morgan": "^1.10.0",
