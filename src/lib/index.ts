@@ -1,10 +1,37 @@
 import { coursesObj, departmentsObj } from "@/context/college/types";
+import Cookies from 'js-cookie';
 
 export const Org = {
     name: "Kumase College of Health Technology",
     name2: "KUCHTECH",
     siteUrl: "kuchtech.com"
 }
+
+export const Cookie =  {
+    set(key: string, val: string, options?: Cookies.CookieAttributes) {
+        // const defaultOptions = {
+        //     signed: true,
+        //     httpOnly: true
+        // }
+        return Cookies.set(key, val, options);
+    },
+    get(key: string) {
+        return Cookies.get(key);
+    },
+    getAndParse(key: string) {
+        const val = Cookies.get(key);
+
+        if (typeof val === 'string') {
+            return JSON.parse(val);
+        }
+        return val;
+    },
+    del(key: string) {
+        Cookies.remove(key);
+        return true;
+    }
+}
+
 
 export function parseLocalStorage(key: string) {
     const item  = localStorage.getItem(key);
