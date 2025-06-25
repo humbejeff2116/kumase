@@ -11,27 +11,6 @@ const TOKEN_EXPIRATION = 'x-access-token-expiration';
 const defaultToken = '';
 const defaultTokenExpiration = 0;
 
-const mockStudent = {
-    _id: "6708d68db98dddc68744d3dd",
-    id: "6708d68db98dddc68744d3dd",
-    contactNumber: "08145578967",
-    profileImage: '',
-    title: "Mr",
-    surname: "John",
-    firstName: "Doe",
-    otherName: "N",
-    maritalStatus: "Single",
-    gender: "Male",
-    dateOfBirth: "4/05/2002",
-    nationality: "Nigeria",
-    stateOfOrigin: "Benue",
-    regNo: "KUCH/200/1988",
-    department: "Community Health",
-    course: "Community Health Extension Worker",
-    level: '100',
-    email: '',
-    onboarded: true
-}
 
 interface AuthContextProviderProps {
     children: React.ReactNode
@@ -47,11 +26,10 @@ export function AuthContextProvider({children}: AuthContextProviderProps) {
     const [viewUserProfileData, setViewUserProfileData] = useState({});
     const [tokenExpiration, setTokenExpiration] = useState(0);
    
-    // TODO... remove setStudent and un comment setStateLoad
     useEffect(()=> {
-        setStudent(mockStudent);
-        setUser(mockStudent);
-        // setStateOnload();
+        // setStudent(mockStudent);
+        // setUser(mockStudent);
+        setStateOnload();
     }, []);
 
     const setStateOnload = () => {
@@ -68,6 +46,7 @@ export function AuthContextProvider({children}: AuthContextProviderProps) {
 
     const setUserData = (user: any, student: any) => {
         saveToLocalStorage(USER, user);
+        saveToLocalStorage(STUDENT, student);
         setUser(user);
         setStudent(student);
     }
