@@ -14,7 +14,7 @@ import { filterUser } from '../../lib/shared';
 import logs from '../../lib/exceptions';
 import { studentAccountService, studentService } from '../../services/student';
 import { NextRequest, NextResponse } from 'next/server.js';
-import { cookieKey } from '@/middleware.js';
+// import { cookieKey } from '@/middleware.js';
 import { cookies } from 'next/headers.js';
 // import { studentService } from '../../services/student/index.js';
 const { handleUserException } = logs;
@@ -159,7 +159,7 @@ class Controller {
             const cookieStore = await cookies();
 
             cookieStore.set({
-                name: cookieKey,
+                name: "loginCookie",
                 value: userCookie,
                 httpOnly: true,
                 path: '/'
