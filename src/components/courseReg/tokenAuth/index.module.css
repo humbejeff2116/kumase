@@ -30,3 +30,37 @@
     font-size: 1.3rem;
     margin-right: 0.4rem;
 }
+
+
+/* message box styles */
+.messageBoxContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    padding: 1rem;
+    border-radius: 4px;
+    /* min-height: 3.5rem; */
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
+    background-color: var(--background-prim);
+    z-index: 30;
+    right: -100%;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+
+    top: calc(var(--header-height) + 1rem);
+}
+
+.showMessageBox {
+    right: 1rem;
+    opacity: 1;
+}
+
+.messageBoxTextWrapper {
+    /* border: 1px solid var(--prim-border-color); */
+    /* max-width: 16rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+} 

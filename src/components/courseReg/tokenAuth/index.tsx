@@ -3,14 +3,13 @@ import TokenAuthenticator, { CourseRegButtons } from "@/components/courseReg/tok
 import StudentCard from "../studentCard";
 import { useEffect, useState } from "react";
 import { Timer } from "@/components/types";
-import { authStudentToken } from "@/services/student.http";
+import { authStudentToken, registerStudentCourse } from "@/services/student.http";
 import { Spinner, SpinnerSmall } from "@/components/loader/spinner";
 import { IconContext } from "react-icons";
 import { RiErrorWarningLine } from "react-icons/ri";
 import styles from './index.module.css';
 import { TopPopUpBox } from "@/components/modal/topModals";
 import usePopUpFor from "@/components/modal/shared";
-import CourseForm from "@/components/courseForm";
 import StudentCourses from "../studentCourses";
 
 
@@ -27,7 +26,8 @@ export default function TokenAuth({
     isRegistered
 }: TokenAuthProps) {
     const [message, setMessage] = useState('');
-    const [showMessage, setShowMessage] = useState(false);
+    const [showMessageBox, setShowMessageBox] = useState(false);
+    const [showPopup, setShowpopup] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [showLoader, setShowLoader] = useState(false);
     const [showCourses, setShowCourses] = useState(false);
@@ -35,6 +35,10 @@ export default function TokenAuth({
     let timer: Timer = null;
 
     useEffect(() => {
+        if (isRegistered) {
+            setShowMessageBox(true);
+        }
+
         return () => {
             if (timer) {
                 clearTimeout(timer);
@@ -42,42 +46,56 @@ export default function TokenAuth({
         }
     }, []);
 
-    const authToken = (): Promise<{isValidToken: boolean}> => {
-        return new Promise((res, rej) => {
-            return setTimeout(() => res({isValidToken: true}), 3000);
-        })
-    }
-
     const handleAuthToken = async (values: any) => {
+        setError(false);
         setSubmitting(true);
         setMessage('Authenticating Token...');
-        setShowMessage(true);
+        setShowpopup(true);
+        
+        try {
 
-        // const { isValidToken } = await authStudentToken(student._id || student.id);
-        // TODO... use appriopriate auth token function
-        const { isValidToken } = await authToken();
-        setSubmitting(false);
+            const { authenticated:isValidToken } = await authStudentToken(student._id || student.id, '');
+            setSubmitting(false);
 
-        if (!isValidToken) {
-            setMessage('Invalid Token Provided');
-            return;
+            if (!isValidToken) {
+                setError(true);
+                setMessage('Invalid Token Provided');
+                timer = setTimeout(() => {
+                    setShowpopup(false);
+                }, 6000);
+                return;
+            }
+            await registerStudentCourse(
+                student._id || student.id,
+                {
+                    level: "",
+                    session: "",
+                    semester: "",
+                    time: ""
+                } 
+            )
+
+            setMessage('Registering Courses...');
+
+            setMessage('Courses Registered');
+            timer = setTimeout(() => setMessage('Generating Course Form...'), 800);
+
+            timer = setTimeout(() => {
+                setShowLoader(true);
+                setShowpopup(false);
+            }, 1500);
+
+            timer = setTimeout(() => {
+                setShowLoader(false);
+                setShowCourses(true);
+            }, 2000)
+        } catch (err) {
+
         }
-
-        setMessage('Valid Token Provided');
-        timer = setTimeout(() => setMessage('Generating Course Form...'), 800);
-        timer = setTimeout(() => {
-            setShowLoader(true);
-            setShowMessage(false);
-        }, 1500);
-        timer = setTimeout(() => {
-            setShowLoader(false);
-            setShowCourses(true);
-        }, 2000)
-
     }
 
     const closeMessageBox = () => {
-        setShowMessage(false);
+        setShowpopup(false);
     }
 
     return (
@@ -86,8 +104,16 @@ export default function TokenAuth({
         dontShowCloseButton={!error}
         closePopUp={closeMessageBox}
         message={message}
-        showPopUp={showMessage}
+        showPopUp={showPopup}
         usedFor={error ? usePopUpFor.error : usePopUpFor.success}
+        />
+        <MessageBox
+        message={
+            isRegistered ? 
+            "Courses Already Registered" : 
+            "Course Registration Successful"
+        }
+        showBox={showMessageBox}
         />
         {isRegistered ? (
             <>
@@ -140,5 +166,28 @@ export default function TokenAuth({
             </>
         )}
        </> 
+    )
+}
+
+interface MessageBoxProps {
+    message: string
+    showBox: boolean
+}
+
+function MessageBox({
+    message,
+    showBox
+}: MessageBoxProps) {
+    return (
+        <div className= {`${styles.messageBoxContainer} ${showBox && styles.showMessageBox}`}>
+            <div className={`${styles.messageBoxTextWrapper}`}>
+                {/* <IconContext.Provider value={{className: styles.icon}}>
+                    <BiCheck/>
+                </IconContext.Provider> */}
+                <span className={styles.message}>
+                {message}
+                </span>
+            </div>
+        </div>
     )
 }
