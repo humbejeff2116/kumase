@@ -2,15 +2,15 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { authenticateUser, authenticateAccountToken } from './services/services.http';
 import appRoutes from './routes';
-import { cookies } from 'next/headers';
+// import { cookies } from 'next/headers';
  
 
 export const cookieKey = "loginCookie";
 
 export async function middleware(req: NextRequest) {
-  const cookieStore = await cookies()
-   const currentUser = cookieStore.get(cookieKey)?.value;
-    // const currentUser = req.cookies.get(cookieKey)?.value;
+  // const cookieStore = await cookies()
+  //  const currentUser = cookieStore.get(cookieKey)?.value;
+    const currentUser = req.cookies.get(cookieKey)?.value;
 
     console.log('current user middleware', currentUser);
 
@@ -22,8 +22,8 @@ export async function middleware(req: NextRequest) {
     const currTime = Math.floor(Date.now()/1000);
 
     if (currTime > JSON.parse(currentUser).jwtExpireAt) {
-      // req.cookies.delete(cookieKey);
-      cookieStore.delete(cookieKey)
+      req.cookies.delete(cookieKey);
+      // cookieStore.delete(cookieKey)
       const response = NextResponse.redirect(new URL(appRoutes.signIn, req.url));
       response.cookies.delete(cookieKey);
       return response; 
