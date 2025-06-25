@@ -117,12 +117,23 @@ export function getCoursesABreviation(course?: string) {
         return;
     }
     
-    switch (course) {
-        case coursesObj.comunityHealth.full:
+    switch (course.toLowerCase()) {
+        case coursesObj.comunityHealth.full.toLowerCase():
             return coursesObj.comunityHealth.short
-        case coursesObj.medLab.full:
+        case coursesObj.comunityHealth.short.toLowerCase():
+            return coursesObj.comunityHealth.short
+
+        case coursesObj.medLab.full.toLowerCase():
             return coursesObj.medLab.short
+        case coursesObj.medLab.short.toLowerCase():
+            return coursesObj.medLab.short
+
+        case coursesObj.pharm.full.toLowerCase():
+            return coursesObj.pharm.short
+        case coursesObj.pharm.short.toLowerCase():
+            return coursesObj.pharm.short
+            
         default:
-            throw new Error('course not specified');
+            throw new Error('course not specified::-> @/lib/getCoursesABreviation');
     }
 }
