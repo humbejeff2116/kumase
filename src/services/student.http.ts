@@ -1,7 +1,8 @@
 import { Student } from '@/context/auth/context';
 import httpBase, { API_DOMAIN, httpBaseWithCredentials } from './http.config';
+import { APIBase } from './services.http';
 
-export const APIBase = `api/v1`;
+
 const backendAPI = httpBase(APIBase);
 const backendAPIWithCredentials = httpBaseWithCredentials(APIBase);
 

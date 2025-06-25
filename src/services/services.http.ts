@@ -1,7 +1,7 @@
 import { User } from '@/context/auth/context';
 import httpBase, { API_DOMAIN, httpBaseWithCredentials } from './http.config';
 
-export const APIBase = `api/v1`;
+export const APIBase = `${API_DOMAIN}/api/v1`;
 const backendAPI = httpBase(APIBase);
 const backendAPIWithCredentials = httpBaseWithCredentials(APIBase);
 
