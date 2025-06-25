@@ -57,7 +57,7 @@ function LoginAndSignupLink({
 }: LoginAndSignupLinkProps) {
     const pathname = usePathname();
 
-    const isActivePath = (pathname: string , href: string) => {
+    const isActivePath = (pathname: string | null , href: string) => {
         return pathname === href
     }
 
