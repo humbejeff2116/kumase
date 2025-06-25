@@ -22,7 +22,8 @@ export async function middleware(req: NextRequest) {
     const currTime = Math.floor(Date.now()/1000);
 
     if (currTime > JSON.parse(currentUser).jwtExpireAt) {
-      req.cookies.delete(cookieKey);
+      // req.cookies.delete(cookieKey);
+      cookieStore.delete(cookieKey)
       const response = NextResponse.redirect(new URL(appRoutes.signIn, req.url));
       response.cookies.delete(cookieKey);
       return response; 
