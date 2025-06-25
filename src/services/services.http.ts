@@ -1,9 +1,4 @@
-import { User } from '@/context/auth/context';
-import httpBase, { API_DOMAIN, httpBaseWithCredentials } from './http.config';
-
-export const APIBase = `${API_DOMAIN}/api/v1`;
-const backendAPI = httpBase(APIBase);
-const backendAPIWithCredentials = httpBaseWithCredentials(APIBase);
+import { API_DOMAIN, backendAPI } from './http.config';
 
 
 interface LoginDetails {

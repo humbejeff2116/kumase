@@ -1,10 +1,5 @@
 import { Student } from '@/context/auth/context';
-import httpBase, { API_DOMAIN, httpBaseWithCredentials } from './http.config';
-import { APIBase } from './services.http';
-
-
-const backendAPI = httpBase(APIBase);
-const backendAPIWithCredentials = httpBaseWithCredentials(APIBase);
+import { backendAPI } from './http.config';
 
 
 async function authStudentToken(studentId: string, token: string) {

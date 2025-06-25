@@ -2,8 +2,7 @@ import axios from 'axios';
 // import fetchAdapter from '@vespaiach/axios-fetch-adapter';
 export const API_DOMAIN = process.env.NEXT_PUBLIC_API_URL || `http://localhost:3000`;
 export const IMAGE_DOMAIN = process.env.NEXT_PUBLIC_API_URL || `http://localhost:3000`;
-
-
+export const APIBase = 'api/v1';
 export default function httpBase(URL: string, contentType = "application/json") {
     return axios.create({
         baseURL: URL,
@@ -28,5 +27,5 @@ export function httpBaseWithCredentials(URL: string, contentType = "application/
     });
 }
 
-export const backendAPI = httpBase(`${API_DOMAIN}/api/v1`);
-export const backendAPIWithCredentials = httpBaseWithCredentials(`${API_DOMAIN}/api/v1`);
+export const backendAPI = httpBase(APIBase);
+export const backendAPIWithCredentials = httpBaseWithCredentials(APIBase);
