@@ -1,10 +1,11 @@
 import styles from 'index.module.css';
+import AdminLogin from '../login';
 
 
-export default function _Login() {
+export default function _AdminLogin() {
     return (
         <div>
-            admin login
+            <AdminLogin/>
         </div>
     )
 }

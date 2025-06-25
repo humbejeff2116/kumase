@@ -1,4 +1,4 @@
-import _Login from "@/components/admin/_login";
+import _AdminLogin from "@/components/admin/_login";
 import { Metadata } from "next";
 
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function SigninPage() {
     return (
         <div>
-            <_Login/>
+            <_AdminLogin/>
         </div>
     )
 }
