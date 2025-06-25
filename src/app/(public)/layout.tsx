@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { MainLayout, PublicLayout } from '@/components/layout';
+import { CourseFormLayout, MainLayout, PublicLayout } from '@/components/layout';
 // import "../globals.css";
 
 // const geistSans = localFont({
@@ -84,4 +84,16 @@ export default function RootLayout({
             // </body>
         // </html>
     );
+}
+
+export function StudentCourseFormLayout({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
+    return (
+        <CourseFormLayout>
+            {children}
+        </CourseFormLayout>
+    )
 }

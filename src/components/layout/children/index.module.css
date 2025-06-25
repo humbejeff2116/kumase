@@ -1,9 +1,9 @@
-.childrenWithFooterWrapper{
+.childrenWithFooterWrapper {
     border:1px solid black;
     width: 100%;
 }
 
-.childrenContainer{
+.childrenContainer {
     border-left: 1px solid var(--prim-border-color);
     position: relative;
     /* margin-left: var(--sidebar-width); */
