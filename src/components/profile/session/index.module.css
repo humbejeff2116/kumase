@@ -28,12 +28,15 @@
 
 .sessionDetail {
     /* border: 1px solid var(--border-sec); */
-    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
+    /* box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2); */
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
     position: relative;
-    background-color: var(--background-sec);
+    /* background-color: var(--background-sec); */
+
+    background-color: rgba(237, 242, 250, 0.5);
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
 }
 
 .detailIconWrapper {
