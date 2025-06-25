@@ -82,7 +82,7 @@ export default function Login() {
                 jwtExpireAt: TOKEN_EXPIRATION
             }
 
-            Cookie.set(cookieKey, JSON.stringify(userCookie));
+            // Cookie.set(cookieKey, JSON.stringify(userCookie));
             setUserData(user, student);
             setTokenData(TOKEN, TOKEN_EXPIRATION);
             setLoginError(false);
