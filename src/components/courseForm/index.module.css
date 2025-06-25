@@ -2,9 +2,11 @@
     /* border: 1px solid yellow; */
     position: relative;
     padding: 1rem;
-    margin: 1rem auto;
+    /* margin: 1rem auto; */
     border-radius: 8px;
-    box-shadow: inset 1px 4px 4px 0 var(--text-prim-opac-2);
+    background-color: rgba(237, 242, 250, 0.5);
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
+    width: 100%;
 }
 
 .headingWrapper {
@@ -12,7 +14,7 @@
     /* padding: 0.5rem 0; */
     display: grid;
     grid-template-columns: 80% 20%;
-    background-color: #fdfdfd;
+    /* background-color: #fdfdfd; */
     margin-bottom: 1rem;
     /* gap: 0.5rem; */
 }
@@ -187,5 +189,94 @@
 }
 
 .signatureName {
+
+}
+
+
+/* styles for empty course form */
+
+.emptyContainer {
+    /* border: 1px solid red; */
+    border-radius: 8px;
+    min-height: 50vh;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 5px 5px 1px var(--text-color-opac-1);
+}
+
+.emptyContentWrapper {
+    /* border: 1px solid yellow; */
+    text-align: left;
+    max-width: 30rem;
+    font-size: 1.3rem;
+}
+
+.emptyFormChildTop {
+    margin-bottom: 2rem;
+}
+
+.regNo {
+    font-size: 0.8rem;
+}
+
+.emptyFormChild a {
+    color: var(--prim-color);
+    text-decoration: none;
+    transition: all ease 0.5s;
+}
+
+.emptyFormChild a:hover {
+    text-decoration: underline;
+}
+
+.emptyFormChild span {
+    color: var(--prim-color);
+}
+
+
+.emptyFormLinkWrapper {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+}
+
+.emptyFormLinkWrapper a {
+    border: none;
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-3);
+    background-color: var(--prim-color);
+    border-radius: 8px;
+    padding: 6px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--background-prim);
+    transition: all ease 0.5s;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.emptyFormLinkWrapper a:hover {
+    transform: scale(1.1);
+}
+
+.buttonIcon {
+    font-size: 1.2rem;
+    margin-right: 0.4rem;
+}
+
+@media print {
+
+    .container1 {
+        /* border: 1px solid yellow; */
+        padding: 1rem;
+        margin: 0;
+        border-radius: 0;
+        /* background-color: rgba(237, 242, 250, 0.5);
+        box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2); */
+        width: 100%;
+    }
 
 }

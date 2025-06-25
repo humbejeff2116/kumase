@@ -1,5 +1,5 @@
 'use client'
-import useAuth, { User, userEnum } from "@/context/auth/context"
+import useAuth, { Student, User, userEnum } from "@/context/auth/context"
 import Image from "next/image"
 import styles from './index.module.css';
 import { Course } from "@/data/courses/communityHealth";
@@ -14,30 +14,46 @@ import ProfileImageUpdater from "../ProfileImageUpdater";
 import { ButtonEvent } from "../types/events";
 import { APIBase } from "@/services/services.http";
 import { IMAGE_DOMAIN } from '@/services/http.config';
+import { School } from "@/context/college/types";
+import Link from "next/link";
+import appRoutes from "@/routes";
+import { Timer } from "../types";
 
 
 interface CourseFormProps {
-    level: string | null
+    isRegistered: boolean
 }
 
-export default function CourseForm({
-    level
+export default function CourseFormClient({
+    isRegistered
 }: CourseFormProps) {
-    // const [courses, setCourses] = useState<Array<Course> | null>(null);
     const [showImageSelector, setShowImageSelector] = useState(false);
-
-    const { user } = useAuth();
+    const { student } = useAuth();
     const { school } = useCollegeContext();
+    let timer: Timer = null;
+
     const courses = useMemo(() => {
-        if (user?.department && level && school?.semester) {
-            return getCourseFormCourses(user.department, level, school.semester);
+        if (student?.department && student?.level && school?.semester) {
+            return getCourseFormCourses(student.department, student?.level, school.semester);
         } 
         return null;  
-    }, [level])
+    }, [student, school]);
 
     useEffect(() => {
-        if (!user?.profileImage) {
+        if (!student?.profileImage) {
             setShowImageSelector(true);
+        }
+    }, [student]);
+
+    useEffect(() => {
+        if (student?.profileImage && isRegistered) {
+            timer = setTimeout(() => window.print(), 200);
+        }
+
+        return () => {
+            if (timer) {
+                clearTimeout(timer);
+            }
         }
     }, []);
 
@@ -48,31 +64,38 @@ export default function CourseForm({
     }
 
     return (
-        <div className={styles.container1}>
-            {/* <ProfileImageUpdater 
+        <>
+        {isRegistered && (
+            <ProfileImageUpdater 
             show={showImageSelector}
             handleCLose={handleCLoseImageSelector}
-            /> */}
+            />
+        )}
+        <div className={styles.container1}>
             <Heading/>
-            {user && (
-                <UserDetails user={user}/>
-            )}                    
-            {!level ? (
-                <EmptyForm/>
+            {student && (
+                <StudentDetails student={student}/>
+            )}
+            {!isRegistered ? (
+                <EmptyForm 
+                student={student} 
+                school={school}
+                />
             ) : (
                 <>
                     <CoursesOffering courses={courses}/>
                     <AdminSignatures/>
-                </> 
-            )}
+                </>  
+            )}                    
         </div>
+        </>
     )
 }
 
 
 function Heading() {
-    const { user } = useAuth();
-    const src = `${IMAGE_DOMAIN}/${user?.profileImage}`;
+    const { student } = useAuth();
+    const src = `${IMAGE_DOMAIN}/${student?.profileImage}`;
 
     return (
         <div className={styles.headingWrapper}>
@@ -81,7 +104,7 @@ function Heading() {
                     <Image alt='KUCHTECH' src={logo}/>
                 </div>
                 <div className={styles.headingLogoText}>
-                    Kumase college og Health tech
+                    Kumase College of Health Technology
                 </div>
             </div>
 
@@ -90,7 +113,7 @@ function Heading() {
                     <Image 
                     width={50} 
                     height={50} 
-                    alt={`Photo of ${user?.firstName}`} 
+                    alt={`Photo of ${student?.firstName}`} 
                     src={src}
                     />
                 </div>
@@ -98,10 +121,6 @@ function Heading() {
         </div>
     )
 }
-
-// TODO...
-// type userDetails with user interface defined in auth context
-// move userDetails to auth context
 
 
 function chunkCols(user: User) {
@@ -119,13 +138,13 @@ function chunkCols(user: User) {
     return arr;
 }
 
-interface UserDetailsProps {
-    user: User
+interface StudentDetailsProps {
+    student: Student
 }
 
-function UserDetails({
-    user,
-}: UserDetailsProps) {
+function StudentDetails({
+    student,
+}: StudentDetailsProps) {
     return (
         <div className={styles.userDetailsWrapper}>
             {chunkCols(userEnum).map((col, i) => {
@@ -136,11 +155,11 @@ function UserDetails({
                             {userEnum[key]}:
                             <span>
                                 {key === 'department' ? (
-                                    getDepartmentABreviation(user[key])
+                                    getDepartmentABreviation(student[key])
                                 ) : key === 'course' ? (
-                                    getCoursesABreviation(user[key])
+                                    getCoursesABreviation(student[key])
                                 ) : (
-                                    user[key]  
+                                    student[key]  
                                 )}
                             </span>  
                         </div> 
@@ -152,14 +171,56 @@ function UserDetails({
     )
 }
 
+interface EmptyFormProps {
+    student: Student | null
+    school: School | null
+}
 
-function EmptyForm() {
+function EmptyForm({
+    student,
+    school
+}: EmptyFormProps) {
+
+    // TODO... use extracted student link hook
+    const href = useMemo(() => {
+        return ((student: Student | null) => {
+            return `${appRoutes.courseReg}/${student && 
+            encodeURIComponent(student.id || student._id)}`;
+        })(student);
+    }, [student])
+
     return (
         <div className={styles.emptyFormContainer}>
             <EmptyState 
-            heading="No Course Form" 
-            writeUp="Kindly select your current level to get your course form"
-            />
+            // emptyContainerClassName={styles.emptyContainer}
+            // emptyContentWrapperClassName={styles.emptyContentWrapper}
+            heading="Courses Not Available!!!" 
+            writeUp=''
+            >
+                <div className={styles.emptyFormChildTop}>
+                    <div className={styles.emptyFormChild}>
+                        Hi{' '} 
+                        <Link href={appRoutes.profile}>
+                        {student?.surname} {student?.firstName}
+                        </Link> 
+                        <span className={styles.regNo}>
+                        {' '}({student?.regNo})
+                        </span>
+                    </div> 
+
+                    <div className={styles.emptyFormChild}>
+                        You are yet to register your courses for 
+                        <span>{' '}{school?.semester}</span>
+                        <sup>{(school?.semester)?.toString() === '1' ? 'st' : 'nd'}</sup>
+                        {' '}(semester) of the <span>{school?.currentSession}</span> Academic (session)
+                    </div>
+                </div>
+                <div className={styles.emptyFormLinkWrapper}>
+                    <Link href={href}> 
+                    Register Courses
+                    </Link>
+                </div>
+            </EmptyState>
         </div>
     )
 }
