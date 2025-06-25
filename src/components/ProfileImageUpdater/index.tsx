@@ -49,7 +49,7 @@ export default function ProfileImageUpdater({
     const [profileImageFile, setProfileImageFile] = useState<File | null>(null);
     const [showImageSelector, setShowImageSelector] = useState(false);
     const [status, setStatus] = useState(defaultStatus);
-    const { user } = useAuth();
+    const { user, student } = useAuth();
     let timer: Timer = null;
 
     useEffect(() => {
@@ -67,13 +67,14 @@ export default function ProfileImageUpdater({
         setStatus({...defaultStatus, action: actions.upolading});
         e.stopPropagation();
         e.preventDefault();
-        if (!user || !user.id || !profileImageFile) return;
+        // TODO... refactor this functionality
+        if (!user || !user.id || !user._id || !student || !profileImageFile) return;
 
         const form = new FormData();
         form.append('profileImage', profileImageFile);
 
         try {
-            const { message, error } = await updateUserProfileImage(user.id, form);
+            const { message, error } = await updateUserProfileImage(user.id || user._id, student._id || student.id, form);
             setStatus({action: actions.uploaded, message, error, showMessage: true});
 
             if (!error) {
