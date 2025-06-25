@@ -1,27 +1,18 @@
 'use client'
-import CourseForm from "../courseForm";
 import Heading from "../heading";
-import LevelSelector from "./levelSelector";
-import { useState } from 'react';
-import { SelectChangeEvent } from '@/components/types/events';
 import styles from './index.module.css';
-import { levels } from "@/context/college/types";
 import LandingPageSectionWrapper from '../landing/sectionWrapper';
+import CourseForm from "../courseForm/index.server";
+import BackButton from "../backButton";
+import Link from "next/link";
+import { IconContext } from "react-icons";
+import { RiUser3Line } from "react-icons/ri";
+import appRoutes from "@/routes";
 
 
-
-const studentLevels = Object.keys(levels).map(key => ({value: levels[key]}));
-
-export default function _StudentCourseForm() {
-    const [level, setLevel] = useState<string | null>(null);
-
-    const handleSelectChange = (e: SelectChangeEvent) => {
-        setLevel(e.target.value);
-    }
-    const levelOptions = [
-        {name: "Level", value: ""},
-        ...studentLevels
-    ]
+export default function _StudentCourseForm({
+    studentId
+}: {studentId: string}) {
 
     return (
         <LandingPageSectionWrapper 
@@ -31,15 +22,28 @@ export default function _StudentCourseForm() {
         showWave
         // useWave2
         >
-        <Heading heading="Course Form"/>
-        <div className={styles.formWrapper}>
-            <LevelSelector 
-            handleSelectChange={handleSelectChange} 
-            options={levelOptions}
-            hasSelectValue={level ? true : false}
-            />
-            <CourseForm level={level}/>
-        </div>
+            <Header/>
+            <Heading text="Course Form"/>
+            <CourseForm studentId={studentId}/>
         </LandingPageSectionWrapper> 
+    )
+}
+
+function Header() {
+    return (
+        <header className={styles.header}>
+            <div className={styles.linksWrapper}>
+                <BackButton
+                buttonWrapperClassName={styles.backButtonWrapper}
+                buttonIconClassName={styles.backButtonIcon}
+                />
+                <Link href={appRoutes.home} className={styles.link}>
+                    <IconContext.Provider value={{className: styles.linkIcon}}>
+                        <RiUser3Line/>
+                    </IconContext.Provider>
+                    My dashboard
+                </Link>
+            </div>
+        </header>
     )
 }
