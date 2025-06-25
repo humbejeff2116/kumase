@@ -14,6 +14,8 @@ import { filterUser } from '../../lib/shared';
 import logs from '../../lib/exceptions';
 import { studentAccountService, studentService } from '../../services/student';
 import { NextRequest, NextResponse } from 'next/server.js';
+import { cookieKey } from '@/middleware.js';
+import { cookies } from 'next/headers.js';
 // import { studentService } from '../../services/student/index.js';
 const { handleUserException } = logs;
 
@@ -148,6 +150,27 @@ class Controller {
                 tokenExpiration: tokenExpiration,
                 message: 'Login Successful'
             }
+            // const nextResponse = NextResponse.next();
+            const userCookie = {
+                ...filteredUser,
+                ['x-access-token']: token,
+                jwtExpireAt: tokenExpiration
+            }
+            const cookieStore = await cookies();
+
+            cookieStore.set({
+                name: cookieKey,
+                value: userCookie,
+                httpOnly: true,
+                path: '/'
+            })
+
+            // nextResponse.cookies.set({
+            //     name: cookieKey,
+            //     value: userCookie,
+            //     // path: '/',
+            // })
+           
             return NextResponse.json(response, {status: 200});
 
             // userSessionService.set(req).save("user", sessionUser);
