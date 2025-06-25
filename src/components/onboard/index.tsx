@@ -15,7 +15,7 @@ export default function OnboardStudent() {
         showWave
         // useWave2
         >
-            <Heading heading="Student Onboarding"/>
+            <Heading text="Student Onboarding"/>
             <FormWrapper/>
         </LandingPageSectionWrapper>
     )
