@@ -1,0 +1,12 @@
+import { studentController } from "@/api/web/controllers/student";
+import { NextRequest, NextResponse } from "next/server";
+
+
+interface Params {
+    params: Promise<{
+        id: string;
+    }>
+}
+export async function POST(req: NextRequest, params: Params) {
+    return studentController.registerCourse(req, params);
+}
