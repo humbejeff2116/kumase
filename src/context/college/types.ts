@@ -29,6 +29,10 @@ export const departmentsObj = {
     medLab: {
         full: 'Medical Laboratory',
         short: 'MLT'
+    },
+    pharm: {
+        full: 'Pharmacy',
+        short: 'PHRM'
     }
 }
 
@@ -40,6 +44,10 @@ export const coursesObj = {
     medLab: {
         full: 'Medical Laboratory',
         short: 'MLT'
+    },
+    pharm: {
+        full: 'Pharmacy',
+        short: 'PHRM'
     }
 }
 
