@@ -1,4 +1,4 @@
-import { Student } from '../../scripts/students.types';
+import { Student } from '@/context/auth/context';
 import httpBase, { API_DOMAIN, httpBaseWithCredentials } from './http.config';
 
 export const APIBase = `${API_DOMAIN}/api/v1`;
