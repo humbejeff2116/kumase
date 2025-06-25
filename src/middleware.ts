@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { authenticateUser, authenticateUserToken } from './services/services.http';
+import { authenticateUser, authenticateAccountToken } from './services/services.http';
  
 
 export const cookieKey = "loginCookie";
 
 export async function middleware(req: NextRequest) {
     const currentUser = req.cookies.get(cookieKey)?.value;
+
+    console.log('current user middleware', currentUser);
 
     if (!currentUser) {
       return NextResponse.redirect(new URL('/login', req.url))
@@ -23,7 +25,7 @@ export async function middleware(req: NextRequest) {
     }
 
     try {
-      const authenticateUserResponse = await authenticateUserToken(JSON.parse(currentUser));
+      const authenticateUserResponse = await authenticateAccountToken(JSON.parse(currentUser));
 
       if (!authenticateUserResponse) {
         return NextResponse.redirect(new URL('/login', req.url));
@@ -37,10 +39,10 @@ export async function middleware(req: NextRequest) {
     }
 }
  
-// current middleware should be run on only home paths;
-// TODO... change null to home when ready to use  functionality 
+// current middleware should be run on only student paths;
+// TODO... change null to student when ready to use  functionality 
 export const config = {
-  matcher: '/null/:path*',
+  matcher: '/student/:path*',
 }
 
 
