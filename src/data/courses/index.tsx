@@ -2,6 +2,7 @@ import { StaticImageData } from "next/image";
 import communityHealthCoursesService from "./communityHealth";
 import medicalLabCoursesService from "./medicalLab";
 import defaultIllustration from '@/images/illustration/freepick/med-students-2.svg';
+import pharmacyCoursesService from "./pharmacy";
 
 
 
@@ -174,11 +175,13 @@ const courses: Courses = [
 ]
 
 export default function getCourseFormCourses(dept: string, level: string, semester: string) {
-    switch (dept) {
-        case departments.communityHealth:
+    switch (dept.toLowerCase()) {
+        case departments.communityHealth.toLowerCase():
             return communityHealthCoursesService.getSemesterCourses(level, semester);
-        case departments.medicalLab:
+        case departments.medicalLab.toLowerCase():
             return medicalLabCoursesService.getSemesterCourses(level, semester);
+        // case departments.pharmacy.toLowerCase():
+        //     return pharmacyCoursesService.getSemesterCourses(level, semester);
         default:
             return communityHealthCoursesService.getSemesterCourses(level, semester);
     }
