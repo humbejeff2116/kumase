@@ -7,7 +7,7 @@ interface HeadingProps {
     headerClass?: string
     icon?: JSX.Element
     iconClassName?: string
-    heading: string
+    text: string
 }
 
 export default function Heading({
@@ -15,7 +15,7 @@ export default function Heading({
     // headerClass,
     icon,
     iconClassName,
-    heading
+    text
 }: HeadingProps) {
     return (
         <div className={wrapperClass ?? styles.headerWrapper}>
@@ -27,7 +27,7 @@ export default function Heading({
                         </IconContext.Provider>
                     </span>
                 )}
-                {heading}
+                {text}
             </div>
         </div>
     )
