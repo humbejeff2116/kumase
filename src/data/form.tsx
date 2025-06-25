@@ -163,6 +163,26 @@ export const studentTokenAuthForm = {
     ]
 }
 
+export const studentTokenGenerationForm = {
+    id: "1",
+    initial: {
+        regNo: '',
+    },
+    yupValidation: {
+        regNo: Yup.string().required('regNo is required'),
+    },
+    formData: [
+        {
+            id:"1",
+            name: "regNo",
+            type: formInputType.text,
+            placeholder: "Enter reg number",
+            label: "Student Reg Number",
+            // dontShowErrorText: true
+        }
+    ]
+}
+
 export const subscribeForm = {
     id: "1",
     initial: {
