@@ -2,6 +2,7 @@ import styles from './index.module.css';
 import LandingPageSectionWrapper from '../landing/sectionWrapper';
 import Heading from "../heading";
 
+
 export default function _StudentCourseReg({
     children
 }: {children: React.ReactNode}) {
@@ -13,7 +14,7 @@ export default function _StudentCourseReg({
         showWave
         // useWave2
         >
-            <Heading heading="Course Reg"/>
+            <Heading text="Course Reg"/>
             <div className={styles.formWrapper}>
                 {children}
             </div>
