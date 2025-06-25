@@ -128,24 +128,11 @@
 
 
 .printCourseFormWrapper {
-    /* position: fixed;
-    bottom: 2rem;
-    right: 2rem; */
-
-
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 2rem;
 }
-
-/* .buttonWrapper {
-    margin-left: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
 
 .printCourseFormWrapper a {
     border: none;

@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import styles from './index.module.css';
 // import { Course } from "@/data/courses/communityHealth";
-import useAuth from '@/context/auth/context';
+import useAuth, { Student } from '@/context/auth/context';
 import useCollegeContext from '@/context/college/context';
 import getCourseFormCourses from '@/data/courses';
 import logo from '@/images/logo/JPG/kumase.jpg';
@@ -14,16 +14,16 @@ import appRoutes from '@/routes';
 
 
 export default function StudentCourses() {
-    // TODO... replace/remove user with student
-        const { student, user } = useAuth();
+        const { student } = useAuth();
         const { school } = useCollegeContext();
         
+        // TODO... extract -> used in courseform/index.client.ts
     const courses = useMemo(() => {
-        if (user?.department && user?.level && school?.semester) {
-            return getCourseFormCourses(user.department, user.level, school.semester);
+        if (student?.department && student?.level && school?.semester) {
+            return getCourseFormCourses(student.department, student.level, school.semester);
         } 
         return null;  
-    }, []);
+    }, [student, school]);
 
 
     return (
@@ -41,19 +41,19 @@ export default function StudentCourses() {
                     <div className={styles.schoolDetailWrapper}>
                         Session
                         <div className={styles.schoolDetail}>
-                            {school?.currentSession || 2025/2026}
+                            {school?.currentSession}
                         </div>
                     </div>
                     <div className={styles.schoolDetailWrapper}>
                         Semester
                         <div className={styles.schoolDetail}>
-                            {school?.semester || 1}<sup>st</sup>
+                            {school?.semester}<sup>st</sup>
                         </div>
                     </div>
                     <div className={styles.schoolDetailWrapper}>
                         Level
                         <div className={styles.schoolDetail}>
-                            {student?.level || 100}
+                            {student?.level}
                         </div>
                     </div>
                 </div>
@@ -98,9 +98,20 @@ export default function StudentCourses() {
 
 
 function PrintCourseForm() {
+    const { student } = useAuth();
+
+    // TODO... extract this as hook
+    const href = useMemo(() => {
+        return ((student: Student | null) => {
+            return `${appRoutes.courseForm}/${student && 
+            encodeURIComponent(student.id || student._id)}`;
+        })(student);
+    }, [student])
+
+
     return (
         <div className={styles.printCourseFormWrapper}>
-            <Link href={appRoutes.courseForm}>
+            <Link href={href}>
                 <IconContext.Provider value={{className: styles.buttonIcon}}>
                     <BiPrinter/>
                 </IconContext.Provider>
