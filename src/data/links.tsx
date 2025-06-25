@@ -16,6 +16,7 @@ import {
     RiLockLine, 
     RiUser3Line, 
     RiMapPin2Line,
+    RiFolderSettingsLine,
 } from "react-icons/ri";
 
 export interface NavLink {
@@ -37,6 +38,22 @@ export interface Links {
 }
 
 const ICON_CLASS_NAME = "nav-icon";
+
+export const linkNames = {
+    private: {
+        home: "Home",
+        profile: "Profile",
+        courseReg: "Course Reg",
+        courseForm: "Course Form",
+    }, 
+    public: {
+        landing: "KuchTech",
+        about: "About",
+        courses: "Courses",
+        contact: "Contact",
+    },
+}
+
 export const publicLinks = {
     sideNav: [
         {
@@ -56,7 +73,7 @@ export const publicLinks = {
         {
             name: "Course Reg",
             icon: (
-                <RiBookReadLine/>
+                <RiFolderSettingsLine/>
             ),
             href: appRoutes.courseReg
         },
@@ -116,7 +133,7 @@ export const publicLinks = {
         {
             name: "Course Form",
             icon: (
-                <RiUser3Line/>
+                <RiBookReadLine/>
             ),
             href: appRoutes.profile
         }
