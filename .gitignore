@@ -18,11 +18,12 @@
 
 # production
 /build
-/buil_script
+/build_script
 /dist
 /server
 start-server.sh
 tsconfig.server.json
+
 
 # misc
 .DS_Store
