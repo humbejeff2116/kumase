@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { CollegeContext } from './context';
 import { parseLocalStorage, saveToLocalStorage } from '@/lib';
 import { School } from './types';
+import { getSchool } from '@/services/services.http';
 
 
 interface CollegeContextProviderProps {
@@ -15,13 +16,14 @@ export function CollegeContextProvider({children}: CollegeContextProviderProps) 
         handlGetSchoolDetails();
     }, []);
 
-    const handlGetSchoolDetails = () => {
-        // TODO... get school details from server
-        const schoolDetails: School = {
-            currentSession: '2023/2024',
-            semester: '1'
-        }
-        setSchool(schoolDetails);
+    const handlGetSchoolDetails = async () => {
+        const { data:school } = await getSchool();
+        // const schoolDetails: School = {
+        //     currentSession: '2025/2026',
+        //     semester: '1'
+        // }
+        school.semester = school.currentSemester;
+        setSchool(school);
     }
 
    
