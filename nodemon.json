@@ -1,0 +1,6 @@
+{
+    "watch": ["./api**/*", "server.ts"],
+    "ext": ".ts, .js",
+    "ignore": [],
+    "exec": "npx ts-node-esm  --project tsconfig.server.json server.ts"
+}
