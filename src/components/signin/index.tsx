@@ -8,13 +8,13 @@ import { SpinnerSmall } from '@/components/loader/spinner';
 import { RiErrorWarningLine, RiLoginCircleLine } from 'react-icons/ri';
 import { IconContext } from 'react-icons';
 import useAuth from '@/context/auth/context';
-// import { Cookie, Session, currentSignedInPath, pathBeforeLogin } from '@/lib';
+import { Cookie } from '@/lib';
 // import userHTTPService from '@/services/user';
 import { useRouter } from 'next/navigation';
 import { TopPopUpBox } from '@/components/modal/topModals';
 import usePopUpFor from '@/components/modal/shared';
 import { Timer } from '@/components/types';
-// import { cookieKey } from '@/middleware';
+import { cookieKey } from '@/middleware';
 import { RiUserAddLine } from 'react-icons/ri';
 import birdsBackground from '@/images/illustration/IRA/bg-23.svg';
 import styles from './index.module.css';
@@ -82,7 +82,7 @@ export default function Login() {
                 jwtExpireAt: TOKEN_EXPIRATION
             }
 
-            // Cookie.set(cookieKey, JSON.stringify(userCookie));
+            Cookie.set(cookieKey, JSON.stringify(userCookie));
             setUserData(user, student);
             setTokenData(TOKEN, TOKEN_EXPIRATION);
             setLoginError(false);

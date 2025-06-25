@@ -9,8 +9,8 @@ import { useRouter } from 'next/navigation';
 import { Timer } from '@/components/types';
 import { TopPopUpBox } from '@/components/modal/topModals';
 import usePopUpFor from '@/components/modal/shared';
-// import { Cookie } from '@/lib';
-// import { cookieKey } from '@/middleware';
+import { Cookie } from '@/lib';
+import { cookieKey } from '@/middleware';
 import Link from 'next/link';
 import appRoutes from '@/routes';
 import { 
@@ -77,7 +77,7 @@ export default function Signup() {
                 ['x-access-token']: TOKEN,
                 jwtExpireAt: TOKEN_EXPIRATION 
             }
-            // Cookie.set(cookieKey, JSON.stringify(userCookie));
+            Cookie.set(cookieKey, JSON.stringify(userCookie));
 
             setCreatingAccountError(false);
             setUserData(user, student);
