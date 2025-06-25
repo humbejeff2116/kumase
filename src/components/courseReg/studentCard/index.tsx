@@ -15,8 +15,9 @@ import { BiCheck, BiCheckDouble } from "react-icons/bi";
 
 
 interface StudentCardProps {
-    student: Student
-    studentToken: StudentToken
+    student: Student | null
+    studentToken: StudentToken | null
+    tokenMessage?: string
     // school: School
 }
 
@@ -24,14 +25,15 @@ interface StudentCardProps {
 export default function StudentCard({
     student,
     studentToken,
+    tokenMessage
 }: StudentCardProps) {
     const [copiedToken, setCopiedToken] = useState(false);
     const src = student?.profileImage ? `${IMAGE_DOMAIN}/${student?.profileImage}` : avatar;
 
 
     const handleCopyToken = async () => {
-        if (studentToken.value) {
-            await navigator.clipboard.writeText(studentToken.value);
+        if (studentToken?.value) {
+            await navigator.clipboard.writeText(studentToken?.value);
             setCopiedToken(true);
         }
     }
@@ -53,7 +55,7 @@ export default function StudentCard({
                 title='Full name'
                 detailIcon={<FaUser/>}  
                 >
-                    <span>{`${student?.surname} ${student?.firstName}`}</span>  
+                    <span>{`${student?.surname || student?.surName} ${student?.firstName}`}</span>  
                 </DetailWrapper>
 
                 <DetailWrapper 
@@ -85,8 +87,12 @@ export default function StudentCard({
                         </>
                     ) : (
                         <span>
+                        {tokenMessage || (
+                            <>
                             You do not have an active token, 
                             please purchase one from school
+                            </>
+                        )}
                         </span>
                     )} 
                     </>
