@@ -21,9 +21,10 @@ export default function UserProfile({
     const [editing, setEditing] = useState(false);
     const [error, setError] = useState(false);
     const [message, setMessage] = useState(false);
-    const { user } = useAuth();
+    const { student } = useAuth();
+    const studentFullNames = `${student?.surname} ${student?.firstName} ${student?.otherName && student.otherName[0]}.`
     
-    const openEditComponent = (detailName: string, detail: string) => {
+    const openEditComponent = (detailName: string, detail?: string) => {
         alert(`${detailName}: ${detail}`);
     }
 
@@ -53,8 +54,8 @@ export default function UserProfile({
                 <div className={styles.avatarContainer}>
                     <div className={styles.avatarWrapper}>
                         <Image 
-                        src={user?.profileImage || avatar} 
-                        alt={`${user?.fullName}'s picture`}
+                        src={student?.profileImage || avatar} 
+                        alt={`${studentFullNames}'s picture`}
                         />
                     </div>
                 </div>
@@ -66,20 +67,20 @@ export default function UserProfile({
                     detailIcon={
                         <FaUser/>
                     }
-                    detail={user?.fullName ?? 'John Doe'} 
+                    detail={studentFullNames} 
                     />
 
                     <UserDetail
                     detailName="Reg Number"
                     showEdit={openEditComponent} 
-                    detail={user?.regNo || 'kucht/005/12'} 
+                    detail={student?.regNo} 
                     detailIcon={ <MdEmail/> }
                     />
 
                     <UserDetail
                     detailName="Department"
                     showEdit={openEditComponent} 
-                    detail={user?.department || 'Community Health'} 
+                    detail={student?.department} 
                     detailIcon={ <MdEmail/> }
                     />
                 </div>
@@ -92,9 +93,9 @@ export default function UserProfile({
 interface UserDetailProps {
     detailName: string
     detailIcon: JSX.Element
-    detail: string
+    detail?: string
     icon?: JSX.Element
-    showEdit: (detailName: string, detail: string) => void
+    showEdit: (detailName: string, detail?: string) => void
 }
 
 function UserDetail({
