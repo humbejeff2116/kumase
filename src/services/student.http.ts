@@ -32,11 +32,17 @@ async function registerStudentCourse(studentId: string, course: any) {
     return response.data;
 }
 
+async function logoutStudentAccount(studentId: string) {
+    const response = await backendAPI.post(`/student/account/sign-out/${studentId}`);
+    return response.data;
+}
+
 export {
     authStudentToken,
     getStudentAdmin,
     genStudentTokenAdmin,
     getStudentsAdmin,
     onboardStudentAdmin,
-    registerStudentCourse
+    registerStudentCourse,
+    logoutStudentAccount
 }

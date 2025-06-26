@@ -180,6 +180,58 @@ class Controller {
         }
     }
 
+        async logOut(
+            req: NextRequest,
+            { params }: { params: Promise<{ id: string }> },
+        ) {
+        try {
+            const studentId = (await params).id;
+
+            if (!studentId) {
+                const response = {
+                    status: 403,
+                    authenticated: true,
+                    message: 'Un authrized'
+                }
+                return NextResponse.json(response, {status: response.status});
+            }
+            const student = await studentService.getStudentById(studentId);
+
+            if (!student) {
+                const response = {
+                    status: 403,
+                    authenticated: true,
+                    message: 'Student not found'
+                }
+                return NextResponse.json(response, {status: response.status});
+            }
+
+            const cookieStore = await cookies();
+            const cookie = cookieStore.get("loginCokie")?.value;
+
+            if (!cookie) {
+                const response = {
+                    status: 403,
+                    authenticated: true,
+                    message: 'User not logged in'
+                }
+                return NextResponse.json(response, {status: response.status});
+            }
+
+            cookieStore.delete("loginCookie");
+
+            const response = {
+                status: 200,
+                authenticated: true,
+                message: 'Log out successful'
+            }
+            return NextResponse.json(response, {status: 200});
+        } catch (err) {
+            console.error(err);
+            handleUserException(new NextResponse(), 200, true, "Error occured while authenticating user token", err);
+        }
+    }
+
     async authenticateToken(req: NextRequest, res: NextResponse) {
         try {
             // const clientToken = req.headers.get('x-access-token');

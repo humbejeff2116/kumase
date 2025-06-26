@@ -103,7 +103,7 @@ interface initialAuthContextType {
     setTokenData: (token: string, tokenExpiration: number) => void
     isAuthenticated: () => boolean
     setViewUserProfileData: (user: any) => void
-    logOut: () => void
+    logOutClient: () => void
     wipeToken: () => void
 }
 
@@ -129,7 +129,7 @@ const initialAuthContext: initialAuthContextType = {
     setTokenData: () => null,
     isAuthenticated: () => false,
     setViewUserProfileData: () => null,
-    logOut: () => null,
+    logOutClient: () => null,
     wipeToken: () => null 
 }
 

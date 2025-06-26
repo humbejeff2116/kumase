@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext, OutSidePopupMessage, Student, User, defaultOutsidePopupMessage } from './context';
 import { parseLocalStorage, saveToLocalStorage } from '@/lib';
+import { logoutStudentAccount } from '@/services/student.http';
 
 
 export const USER = 'user';
@@ -75,14 +76,15 @@ export function AuthContextProvider({children}: AuthContextProviderProps) {
         setTokenExpiration(defaultTokenExpiration);
     }
 
-    const logOut = () => {
+    const logOutClient = async () => {
         setUser(null);
         setUserIsLoggedIn(false);
         setOutsidePopUp(defaultOutsidePopupMessage);
         setViewUserProfileData({});
         setToken(defaultToken);
         setTokenExpiration(defaultTokenExpiration);
-        localStorage.removeItem('user');
+        localStorage.removeItem(USER);
+        localStorage.removeItem(STUDENT);
         localStorage.removeItem(TOKEN);
         localStorage.removeItem(TOKEN_EXPIRATION);
         sessionStorage.removeItem('currentLocation');
@@ -121,7 +123,7 @@ export function AuthContextProvider({children}: AuthContextProviderProps) {
         setTokenData: setTokenData,
         isAuthenticated: isAuthenticated,
         setViewUserProfileData: setViewUserProfileData,
-        logOut: logOut,
+        logOutClient: logOutClient,
         wipeToken: wipeToken
     }
 

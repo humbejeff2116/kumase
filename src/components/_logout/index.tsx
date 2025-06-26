@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Timer } from '@/components/types';
 import styles from './logout.module.css';
 import useAuth from '@/context/auth/context';
@@ -7,29 +7,33 @@ import { useRouter } from 'next/navigation';
 import appRoutes from '@/routes';
 import { Spinner } from '../loader/spinner';
 import LandingPageSectionWrapper from '../landing/sectionWrapper';
+import { logoutStudentAccount } from '@/services/student.http';
 
 
 
 export default function _Logout() {
-    const { logOut } = useAuth();
+    const [error, setError] = useState(false);
+    const { logOutClient, student } = useAuth();
     const router = useRouter();
 
     useEffect(() => {
-        let timer: Timer;
-        const logOutUser = async () => {
-            timer = setTimeout(async () => {
-                await logOut();
+        const logOutUser = async (studentId: string) => {
+            if (error) {
+                setError(false);
+            }
+            try {
+                await logoutStudentAccount(studentId);
+                await logOutClient();
                 router.push(appRoutes.signIn);
-            }, 2000)
-        }
-        // logOutUser();
-
-        return () => {
-            if (timer) {
-                clearTimeout(timer);
+            } catch (error) {
+                setError(true);
             }
         }
-    }, [logOut, router]);
+
+        if (student) {
+            logOutUser(student.id);
+        }
+    }, [logOutClient, student, router]);
   
     
     return (
