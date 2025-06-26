@@ -113,8 +113,8 @@ interface userCookie {
     id: string
 }
 async function authenticateAccountToken(userCookie: userCookie) {
-    const response = await postData(`/student/account/auth`, userCookie);
-    return response;
+    const response = await backendAPI.post(`/student/account/auth`, userCookie);
+    return response.data;
 }
 
 async function authenticateCourseReg(studentId: string) {
