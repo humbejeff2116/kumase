@@ -182,34 +182,38 @@ class Controller {
 
     async authenticateToken(req: NextRequest, res: NextResponse) {
         try {
-            const clientToken = req.headers.get('x-access-token');
-            // const userSession = await userSessionService.setRequest(req).getSession();
+            // const clientToken = req.headers.get('x-access-token');
+            const body = await req.json();
+            const clientToken = body['x-access-token'];
 
             console.log(clientToken);
-            // console.log("user session is", userSession);
             if (!clientToken) {
-                return NextResponse.json({status: 401, success: false, message: 'Un authorized'}, {status: 401});
+                return NextResponse.json({
+                    status: 401, 
+                    authenticated: false, 
+                    message: 'Un authorized'
+                }, {status: 200});
             }
 
             const decodedToken = await jwtService.verify(clientToken);
-            // console.log(decodedToken)
-
             if (!decodedToken ||  decodedToken.expired) {
                 const response = {
                     status: 403,
-                    authenticated: false
+                    authenticated: false,
+                    message: 'Un authorized'
                 }
-                return NextResponse.json(response, {status: 403});
+                return NextResponse.json(response, {status: 200});
             }
 
             const response = {
                 status: 200,
-                authenticated: true
+                authenticated: true,
+                message: 'Authorized'
             }
             return NextResponse.json(response, {status: 200});
         } catch (err) {
             console.error(err);
-            handleUserException(res, 200, true, "Error occured while authenticating user toke", err);
+            handleUserException(res, 200, true, "Error occured while authenticating user token", err);
         }
     }
 

@@ -32,13 +32,14 @@ export async function middleware(req: NextRequest) {
     try {
       const authenticateUserResponse = await authenticateAccountToken(JSON.parse(currentUser));
 
-      if (!authenticateUserResponse) {
-        return NextResponse.redirect(new URL(appRoutes.signIn, req.url));
-      }
+      // if (!authenticateUserResponse) {
+      //   return NextResponse.redirect(new URL(appRoutes.signIn, req.url));
+      // }
       
-      if (authenticateUserResponse.status !== 200 && authenticateUserResponse.authenticated) {
+      if (authenticateUserResponse.status !== 200 && !authenticateUserResponse.authenticated) {
         return NextResponse.redirect(new URL(appRoutes.signIn, req.url));
       }
+      NextResponse.next();
     } catch(err) {
       console.log(err);
     }
@@ -47,7 +48,7 @@ export async function middleware(req: NextRequest) {
 // current middleware should be run on only student paths;
 // TODO... change null to student when ready to use  functionality 
 export const config = {
-  matcher: '/student/:path*',
+  matcher: '/null/:path*',
 }
 
 
