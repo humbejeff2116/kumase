@@ -22,6 +22,7 @@ const appRoutes = {
     search: `${basePath}/search`,
     courseForm: `${basePath}/course-form`,
     courseReg: `${basePath}/course-reg`,
+    account: `${basePath}/account`,
 }
 
 export default appRoutes;
