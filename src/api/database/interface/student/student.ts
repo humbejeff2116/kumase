@@ -87,6 +87,19 @@ const studentDbInterface = {
             console.error(err);
             throw err;
         }
+    },
+
+    async updateStudentRecord(
+        studentId: Types.ObjectId | string, 
+        update: any
+    ) {
+        try {
+            const userResponse = await StudentModel.updateStudentRecord(studentId, update);
+            return userResponse;
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
     }
 }
 
