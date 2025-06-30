@@ -208,7 +208,7 @@ interface ProfileImageSelectorProps {
     onChange: (e:InputChangeEvent) => void
 }
 
-const ProfileImageSelector = ({ 
+export const ProfileImageSelector = ({ 
     labelClassName, 
     labelSpanClassName, 
     inputClassName,
