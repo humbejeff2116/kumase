@@ -45,8 +45,8 @@ export default function CourseFormClient({
     }, [student]);
 
     useEffect(() => {
-        if (student?.profileImage && isRegistered) {
-            timer = setTimeout(() => window.print(), 200);
+        if (isRegistered) {
+            timer = setTimeout(() => window.print(), 300);
         }
 
         return () => {
@@ -64,12 +64,6 @@ export default function CourseFormClient({
 
     return (
         <>
-        {isRegistered && (
-            <ProfileImageUpdater 
-            show={showImageSelector}
-            handleCLose={handleCLoseImageSelector}
-            />
-        )}
         <div className={styles.container1}>
             <Heading/>
             {student && (
@@ -82,8 +76,8 @@ export default function CourseFormClient({
                 />
             ) : (
                 <>
-                    <CoursesOffering courses={courses}/>
-                    <AdminSignatures/>
+                <CoursesOffering courses={courses}/>
+                <AdminSignatures/>
                 </>  
             )}                    
         </div>
@@ -122,8 +116,8 @@ function Heading() {
 }
 
 
-function chunkCols(user: User) {
-    const userKeys = Object.keys(user);
+function chunkCols(student: any) {
+    const userKeys = Object.keys(student);
     let start = 0;
     let rows = 3
   	const cols = Math.ceil(userKeys.length / rows);
@@ -141,31 +135,54 @@ interface StudentDetailsProps {
     student: Student
 }
 
+
+interface UserEnumClone extends User {
+    session?: string 
+    semester?: string
+}
 function StudentDetails({
     student,
 }: StudentDetailsProps) {
+    const { school } = useCollegeContext();
+
+    const userEnumClone: UserEnumClone | null = useMemo(() => {
+        if (school) {
+            return ({
+                ...userEnum, 
+                currentSession: 'Session', 
+                semester: 'Semester'
+            })
+        }
+        return null
+
+    }, [school]);
+
     return (
         <div className={styles.userDetailsWrapper}>
-            {chunkCols(userEnum).map((col, i) => {
-                return (
-                    <div key={i} className={styles.userDetailCol}>
-                    {col.map((key, i) =>
-                        <div key={i} className={styles.userDetail}>
-                            {userEnum[key]}:
-                            <span>
-                                {key === 'department' ? (
-                                    getDepartmentABreviation(student[key])
-                                ) : key === 'course' ? (
-                                    getCoursesABreviation(student[key])
-                                ) : (
-                                    student[key]  
-                                )}
-                            </span>  
-                        </div> 
-                    )}
-                    </div>
-                )
-            })}
+            {userEnumClone && school && (
+                chunkCols(userEnumClone).map((col, i) => {
+                    return (
+                        <div key={i} className={styles.userDetailCol}>
+                        {col.map((key, i) =>
+                            <div key={i} className={styles.userDetail}>
+                                {userEnumClone[key]}:
+                                <span>
+                                {student[key] ? (
+                                    key === 'department' ? (
+                                        getDepartmentABreviation(student[key])
+                                    ) : key === 'course' ? (
+                                        getCoursesABreviation(student[key])
+                                    ) : (
+                                        student[key]  
+                                    )
+                                ) : school[key] ? school[key] : null}
+                                </span>  
+                            </div> 
+                        )}
+                        </div>
+                    )
+                })
+            )}
         </div>
     )
 }
