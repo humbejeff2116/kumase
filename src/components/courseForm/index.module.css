@@ -154,15 +154,15 @@
 
 
 .signaturesWrapper {
-    border: 1px solid red;
-    display: none;
+    /* border: 1px solid red; */
+    /* display: none; */
 }
 
 
 .signaturesTop {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    border: 1px solid red;
+    /* border: 1px solid red; */
     padding: 2rem;
 }
 
@@ -170,7 +170,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .signaturesBottom {
@@ -184,7 +184,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     text-align: center;
 }
 
@@ -268,10 +268,9 @@
 }
 
 @media print {
-
     .container1 {
         /* border: 1px solid yellow; */
-        padding: 1rem;
+        padding: 0.5rem;
         margin: 0;
         border-radius: 0;
         /* background-color: rgba(237, 242, 250, 0.5);
@@ -279,4 +278,15 @@
         width: 100%;
     }
 
+    .headingWrapper {
+        display: none
+    }
+
+    .signaturesTop {
+        padding: 1rem;
+    }
+
+    .signaturesBottom {
+        padding: 1rem;
+    }
 }
