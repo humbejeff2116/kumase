@@ -1,0 +1,208 @@
+.container {
+    /* padding: 2rem; */
+    /* border: 1px solid green; */
+}
+
+.headerWrapper {
+    /* padding: 2rem; */
+}
+
+.header {
+    display: flex;
+    /* border:1px solid green; */
+    padding: 2rem;
+}
+
+.bodyChild {
+    border:1px solid var(--prim-border-color);
+    border-radius: 6px;
+    /* padding: 1rem; */
+    margin-bottom: 1rem;
+    min-height:20vh;
+    /* padding: 1rem; */
+    background-color: var(--background-color);
+}
+
+.bodyChild:last-of-type {
+    margin-bottom: 0;
+}
+
+.bodyChildHeader {
+    color: var(--text-color);
+    padding: 1rem 0;
+    /* border:1px solid green; */
+    font-weight: 550;
+    text-align: center;
+}
+
+/* .formWrapper {
+
+} */
+
+.formWrapper form {
+    /* border:1px solid var(--prim-border-color); */
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 2rem;
+    border-radius: 28px;
+    background-color: rgba(237, 242, 250, 0.5);
+    box-shadow: 1px 2px 2px 0 var(--text-prim-opac-2);
+}
+
+.labelWrapper {
+    /* border: 1px solid red; */
+    /* font-size: 0.85rem; */
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-color-opac-5);
+}
+
+.input{
+    width: 100%;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid var(--border-sec);
+    transition: border-color 0.3s ease;
+    color: var(--text-prim);
+    caret-color: var(--caret-color);
+    padding-left: 0.3rem;
+    background-color: #f8f8f8;
+}
+
+.input:focus {
+    outline: 2px solid var(--outline-color);
+    border: 1px solid var(--prim-color);
+}
+
+
+.inputError {
+    border: 1px solid var(--error-color);
+}
+
+.inputContains {
+    border: 1px solid var(--prim-color);
+}
+
+.inputErrorReport {
+    /* border: 1px solid var(--error-color); */
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    color: var(--error-color);
+}
+
+.inputErrorReport span {
+   margin-left: 0.5rem;
+}
+
+.inputGroup {
+    /* border:1px solid red; */
+    width:30%;
+}
+
+.passwordButtonContainer {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.passwordButtonWrapper {
+    /* border:1px solid blue; */
+    min-width:100%;
+}
+
+.passwordButtonWrapper button {
+    min-width: 100%;
+    height: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--prim-color);
+    color: var(--background-prim);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.passwordButtonWrapper button:hover {
+    transform: scale(1.1);
+    outline: 1px solid var(--outline-color);
+}
+
+.passwordButtonWrapper button:focus {
+    outline: 1px solid var(--outline-color);
+}
+
+.accountRemoveContainer {
+    display:flex;
+    flex-direction: row;
+    /* border:1px solid var(--prim-border-color); */
+    justify-content: space-around;
+    border-radius: 28px;
+    background-color: rgba(237, 242, 250, 0.5);
+}
+
+.accountRemoveChild {
+    /* border:1px solid blue; */
+    width:40%;
+    margin-top:2%;
+    margin-bottom: 2%;
+}
+
+.accountRemoveButtonWrapper {
+    /* border:1px solid green; */
+    width:50%;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top:2%;
+    margin-bottom: 2%;
+}
+
+.accountRemoveButtonWrapper.disable button {
+    width:100%;
+    height:50px;
+    cursor:pointer;
+    border-radius: 4px;
+    border:1px solid rgb(255, 44, 44);
+    background-color: rgb(255, 44, 44);
+    color: var(--background-color);
+    font-weight:bold;
+    transition:all 0.3s ease;
+}
+
+.accountRemoveButtonWrapper.disable button:hover {
+    border:1px solid rgb(252, 87, 87);
+   background-color: rgb(252, 87, 87);
+   color: var(--background-color);
+}
+
+.accountRemoveButtonWrapper.disable button:focus {
+    outline: 1px solid rgb(255, 44, 44);
+}
+
+.accountRemoveButtonWrapper.delete button {
+    width:100%;
+    height:50px;
+    cursor:pointer;
+    border-radius: 4px;
+    border:1px solid rgb(255, 44, 44);
+    background-color: var(--bg-color);
+    color: rgb(255, 44, 44);
+    font-weight:bold;
+    transition:all 0.3s ease;
+}
+
+.accountRemoveButtonWrapper.delete button:hover {
+    background-color: rgb(255, 44, 44);
+    color: var(--background-color);
+}
+
+.accountRemoveButtonWrapper.delete button:focus {
+    outline: 1px solid rgb(255, 44, 44);
+}
