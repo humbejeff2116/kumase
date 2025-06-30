@@ -45,40 +45,48 @@ export const linkNames = {
         profile: "Profile",
         courseReg: "Course Reg",
         courseForm: "Course Form",
+        account: "My Account"
     }, 
     public: {
-        landing: "KuchTech",
+        landing: "Kuchtech",
         about: "About",
         courses: "Courses",
         contact: "Contact",
     },
 }
 
+export const linksRequireStudentId = [
+    linkNames.private.courseReg, 
+    linkNames.private.courseForm,
+    linkNames.private.account,
+    linkNames.private.profile
+]
+
 export const publicLinks = {
     sideNav: [
         {
-            name: "Home",
+            name: linkNames.private.home,
             icon: (
                 <RiHome3Line/>
             ),
             href: appRoutes.home
         },
         {
-            name: "Profile",
+            name: linkNames.private.account,
             icon: (
                 <RiUser3Line/>
             ),
-            href: appRoutes.profile
+            href: appRoutes.account
         },
         {
-            name: "Course Reg",
+            name: linkNames.private.courseReg,
             icon: (
                 <RiFolderSettingsLine/>
             ),
             href: appRoutes.courseReg
         },
         {
-            name: "Course Form",
+            name: linkNames.private.courseForm,
             icon: (
                 <RiBookReadLine/>
             ),
@@ -87,28 +95,28 @@ export const publicLinks = {
     ],
     publicMain: [
         {
-            name: "KuchTech",
+            name: linkNames.public.landing,
             icon: (
                 <RiHome3Line/>
             ),
             href: appRoutes.index
         },
         {
-            name: "About",
+            name: linkNames.public.about,
             icon: (
                 <RiContactsLine/>
             ),
             href: appRoutes.about
         },
         {
-            name: "Courses",
+            name: linkNames.public.courses,
             icon: (
                 <RiBookReadLine/>
             ),
             href: appRoutes.courses
         },
         {
-            name: "Contact",
+            name: linkNames.public.contact,
             icon: (
                 <RiMapPin2Line/>
             ),
@@ -117,25 +125,25 @@ export const publicLinks = {
     ],
     protectedMain: [
         {
-            name: "Home",
+            name: linkNames.private.home,
             icon: (
                 <RiHome3Line/>
             ),
             href: appRoutes.home
         },
         {
-            name: "Profile",
+            name: linkNames.private.profile,
             icon: (
                 <RiUser3Line/>
             ),
             href: appRoutes.profile
         },
         {
-            name: "Course Form",
+            name: linkNames.private.courseForm,
             icon: (
                 <RiBookReadLine/>
             ),
-            href: appRoutes.profile
+            href: appRoutes.courseForm
         }
     ],
     sideNavFooter: [
