@@ -280,7 +280,8 @@ class Controller {
             return NextResponse.json(response, {status: 200});
         } catch (err) {
             console.error(err);
-            handleUserException(new NextResponse(), 500, true, "Error occured while registering course", err);
+            return NextResponse.json({message: 'internal server err'}, {status: 500});
+            // handleUserException(new NextResponse(), 500, true, "Error occured while registering course", err);
         } 
     }
 
@@ -338,7 +339,53 @@ class Controller {
             return NextResponse.json(response, {status: 200});
         } catch (err) {
             console.error(err);
-            handleUserException(new NextResponse(), 500, true, "Error occured while authenticating reg course", err);
+            return NextResponse.json({message: 'internal server err'}, {status: 500});
+            // handleUserException(new NextResponse(), 500, true, "Error occured while authenticating reg course", err);
+        } 
+    }
+
+    async updateStudentRecord(
+        req: NextRequest, 
+        { params }: { params: Promise<{id: string }> }
+    ) {
+        try {
+            const studentId = (await params).id;
+            const formData = await req.formData();
+            const file = formData.get('profileImage') as File
+            const updateFields = Object.fromEntries(formData.entries());
+            const student = await studentService.getStudentById(studentId);
+            console.log("update fields are", updateFields);
+            
+            if (!student) {
+                const response = {
+                    status: 403,
+
+                    error: false,
+                    message: 'Student does not exist',
+                }
+                return NextResponse.json(response, {status: 403});
+            }
+
+            
+            if (file) {
+                const buffer = Buffer.from(await file.arrayBuffer());
+                //TODO... save image using multer and update profile image url
+                updateFields.profileImage = "imageurl"
+            }
+            // const school = await schoolService.getSchool();
+
+            // await studentService.updateStudentRecord(studentId, updateFields);
+            const response = {
+                status: 200,
+                error: false,
+                data: null,
+                message: 'Record updated successfully',
+            }
+            return NextResponse.json(response, {status: 200});
+        } catch (err) {
+            console.error('updateStudentRecord', err);
+            return NextResponse.json({message: 'internal server error'}, {status: 500});
+            // handleUserException(new NextResponse(), 500, true, "Error occured while authenticating reg course", err);
         } 
     }
 }
