@@ -124,6 +124,19 @@ const studentService = {
             console.error(err);
             throw err;
         }
+    },
+
+    async updateStudentRecord(
+        studentId: Types.ObjectId | string, 
+        update: any
+    ) {
+        try {
+            const userResponse = await studentDbInterface.updateStudentRecord(studentId, update);
+            return userResponse;
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
     }
 }
 
