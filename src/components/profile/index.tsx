@@ -8,6 +8,7 @@ import StudentAvatar from "./avatar1";
 import UserProfile from "../userProfile";
 import AvatarLinks from "./avatarButtons";
 import LandingPageSectionWrapper from '../landing/sectionWrapper';
+import StillInDev from "../inDevelopment";
 
 
 
@@ -35,9 +36,7 @@ export default function ProfileWrapper() {
             {activeTab === tabs.profile ? (
                 <StudentProfile/>
             ) : (
-                <div>
-                    user activity
-                </div>
+                <StillInDev/>
             )}
             </div>
         </LandingPageSectionWrapper>
