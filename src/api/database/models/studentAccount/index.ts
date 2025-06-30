@@ -26,6 +26,8 @@ interface UserModelStatics extends Model<StudentAccount, object, StudentAccountM
     getAll(): Promise<Array<HydratedDocument<StudentAccount, StudentAccountMethods>>>;
     getByRegNo(email: string): Promise<HydratedDocument<StudentAccount, StudentAccountMethods> | null>;
     getById(id: Types.ObjectId | string): Promise<HydratedDocument<StudentAccount, StudentAccountMethods> | null>;
+    getByStudentId(studentId: Types.ObjectId | string): Promise<HydratedDocument<StudentAccount, StudentAccountMethods> | null>;
+    updatePassword(accountId: Types.ObjectId | string, newPassword: string): Promise<Response>;
 }
 
 const UserSchema = new Schema<StudentAccount, UserModelStatics, StudentAccountMethods>({
@@ -79,7 +81,8 @@ UserSchema.static('createAccount', async function createAccount(user: StudentAcc
 
 UserSchema.static('getAll', async function getAll(): Promise<Array<HydratedDocument<StudentAccount, StudentAccountMethods>>> {
     const users = await this.find({}, {
-        password: 0
+        password: 0,
+        createdAt: 0
     });
     return users;
 });
@@ -91,9 +94,27 @@ UserSchema.static('getByRegNo', async function getByRegNo(regNo: string): Promis
 
 UserSchema.static('getById', async function getById(id: Types.ObjectId | string): Promise<HydratedDocument<StudentAccount, StudentAccountMethods> | null> {
     const user = await this.findOne({ _id: id }, {
-        password: 0
+        password: 0,
+        createdAt: 0
     });
     return user;
+});
+
+UserSchema.static('getByStudentId', async function getByStudentId(studentId: Types.ObjectId | string): Promise<HydratedDocument<StudentAccount, StudentAccountMethods> | null> {
+    const user = await this.findOne({ studentId: studentId }, {
+        password: 0,
+        createdAt: 0
+    });
+    return user;
+});
+
+UserSchema.static('updatePassword', async function updatePassword(accountId: Types.ObjectId | string, newPassword: string): Promise<Response> {
+     await this.updateOne(
+        { _id: accountId }, 
+        { $set: {password: newPassword} }
+    );
+    const account = await this.findOne({_id: accountId});
+    return ({status: 200, error: false, data: account}) 
 });
 
 
