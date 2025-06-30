@@ -37,6 +37,22 @@ async function logoutStudentAccount(studentId: string) {
     return response.data;
 }
 
+async function updateStudentAccount(updateForm: FormData) {
+    const response = await backendAPI.put(`/student/account/${updateForm.get('studentId')}/${updateForm.get('accountId')}`, updateForm);
+    return response.data;
+}
+
+async function updateStudentRecord(updateForm: FormData) {
+    const studentId = updateForm.get('studentId');
+    updateForm.delete('studentId');
+    const response = await backendAPI.put(
+        `/student/${studentId}`, 
+        updateForm,
+        {headers: {"Content-Type": "multipart/form-data"}}
+    );
+    return response.data;
+}
+
 export {
     authStudentToken,
     getStudentAdmin,
@@ -44,5 +60,7 @@ export {
     getStudentsAdmin,
     onboardStudentAdmin,
     registerStudentCourse,
-    logoutStudentAccount
+    logoutStudentAccount,
+    updateStudentAccount,
+    updateStudentRecord
 }
