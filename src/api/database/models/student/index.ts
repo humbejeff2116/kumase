@@ -66,6 +66,7 @@ interface StudentModelStatics extends Model<Student, object, StudentMethods> {
     regCourse(id: Types.ObjectId | string, courseReg: CourseReg): Promise<Response>;
     updateProfileImage(id: Types.ObjectId | string, profileImage: string): Promise<Response>;
     getStudentsIds(): Promise<Array<HydratedDocument<Student, StudentMethods>>>;
+    updateStudentRecord(id: Types.ObjectId | string, record: any): Promise<Response>;
 }
 
 const StudentSchema = new Schema<Student, StudentModelStatics, StudentMethods>({
@@ -145,6 +146,16 @@ StudentSchema.static('updateProfileImage', async function updateProfileImage(id:
 
     const user = await this.findOne({ _id: id }, {createdAt: 0});
     return ({status: 201, error: false, data: user});
+});
+
+StudentSchema.static('updateStudentRecord', async function updateStudentRecord(id: Types.ObjectId | string, update: any): Promise<Response> {
+    await this.updateOne(
+        { _id: id }, 
+        { "$set": update 
+    });
+
+    const student = await this.findOne({ _id: id }, {createdAt: 0});
+    return ({status: 201, error: false, data: student});
 });
 
 StudentSchema.static('addPurchaseToken', async function addPurchaseToken(id: Types.ObjectId | string, purchasedToken: PurchasedToken): Promise<Response> {
