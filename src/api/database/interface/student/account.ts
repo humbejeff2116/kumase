@@ -12,6 +12,16 @@ const studentAccountDbInterface = {
         }
     },
 
+    async updatePassword(accountId: Types.ObjectId | string, newPassword: string) { 
+        try {
+            const response = await StudentAccountModel.updatePassword(accountId, newPassword);
+            return response;
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
+    },
+    
     async getAccountByRegNo(regNo: string) {
         try {
             const studentAccount = await StudentAccountModel.getByRegNo(regNo);
@@ -32,9 +42,16 @@ const studentAccountDbInterface = {
         }
     },
 
+    async getAccountByStudentId(studentId: Types.ObjectId | string) {
+        try {
+            const studentAccount = await StudentAccountModel.getByStudentId(studentId);
+            return studentAccount;
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
+    },
 
-
-    
     async checkAccountPassword(password: string, user: any): Promise<{error: boolean, match: boolean}> {
         return new Promise((res, rej) => {
             user.checkPassword(password, function (err: Error, isMatch: boolean) {
