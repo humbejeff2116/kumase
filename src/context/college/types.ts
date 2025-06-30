@@ -1,4 +1,5 @@
 export interface School {
+    [key: string]: any
     currentSession: string
     semester: string   
 }
