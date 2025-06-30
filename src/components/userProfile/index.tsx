@@ -1,9 +1,7 @@
-'use client'
-import { useState } from 'react';
+'use client';
 import Image from 'next/image';
 import { IconContext } from 'react-icons';
 import { FaUser } from 'react-icons/fa';
-import { RiEdit2Fill } from 'react-icons/ri';
 import { MdEmail } from 'react-icons/md';
 import useAuth from '@/context/auth/context';
 import avatar from '@/images/avatar/avatar2.png';
@@ -17,39 +15,11 @@ interface UserProfileProps {
 export default function UserProfile({
     children
 }: UserProfileProps) {
-    const [openModal, setOpenModal] = useState(false);
-    const [editing, setEditing] = useState(false);
-    const [error, setError] = useState(false);
-    const [message, setMessage] = useState(false);
     const { student } = useAuth();
     const studentFullNames = `${student?.surname} ${student?.firstName} ${student?.otherName && student.otherName[0]}.`
-    
-    const openEditComponent = (detailName: string, detail?: string) => {
-        alert(`${detailName}: ${detail}`);
-    }
 
-
-    const editValue = (key: string, value: string) => {
-
-    }
-
-
-    // TODO... implement empty user component
-    // if (!user) {
-    //     return (
-    //         <div>
-    //             no user component
-    //         </div>
-    //     )
-    // }
     return (
         <div className={styles.container}>
-            {openModal && (
-                <div>
-                    modal
-                    {/* TODO... implement modal for editing here */}
-                </div>
-            )}
             <div className={styles.childWrapper}>
                 <div className={styles.avatarContainer}>
                     <div className={styles.avatarWrapper}>
@@ -63,7 +33,7 @@ export default function UserProfile({
                 <div className={styles.userDetailsContainer}>
                     <UserDetail
                     detailName="fullName"
-                    showEdit={openEditComponent} 
+                    // showEditPanel={openEditComponent} 
                     detailIcon={
                         <FaUser/>
                     }
@@ -72,15 +42,21 @@ export default function UserProfile({
 
                     <UserDetail
                     detailName="Reg Number"
-                    showEdit={openEditComponent} 
+                    // showEditPanel={openEditComponent} 
                     detail={student?.regNo} 
                     detailIcon={ <MdEmail/> }
                     />
 
                     <UserDetail
                     detailName="Department"
-                    showEdit={openEditComponent} 
+                    // showEditPanel={openEditComponent} 
                     detail={student?.department} 
+                    detailIcon={ <MdEmail/> }
+                    />
+                    <UserDetail
+                    detailName="Level"
+                    // showEditPanel={openEditComponent} 
+                    detail={student?.level} 
                     detailIcon={ <MdEmail/> }
                     />
                 </div>
@@ -95,7 +71,8 @@ interface UserDetailProps {
     detailIcon: JSX.Element
     detail?: string
     icon?: JSX.Element
-    showEdit: (detailName: string, detail?: string) => void
+    // isEditable: boolean
+    // showEditPanel: (detailName: string, detail?: string) => void
 }
 
 function UserDetail({
@@ -103,7 +80,8 @@ function UserDetail({
     detail,
     detailIcon,
     icon,
-    showEdit
+    // isEditable,
+    // showEditPanel
 }: UserDetailProps) {
     return (
         <div className={styles.userDetailsChild}>
@@ -115,14 +93,15 @@ function UserDetail({
                 </span>
                 {detail}
             </div>
-            
-            <div className={styles.userDetailButtonWrapper}>
-                <button onClick={() => showEdit(detailName, detail)}>
-                    <IconContext.Provider value={{className: styles.detailButtonIcon}}>
-                        {icon ?? <RiEdit2Fill/>}
-                    </IconContext.Provider>
-                </button>
-            </div>
+            {/* {isEditable ? (
+                <div className={styles.userDetailButtonWrapper}>
+                    <button onClick={() => showEditPanel(detailName, detail)}>
+                        <IconContext.Provider value={{className: styles.detailButtonIcon}}>
+                            {icon ?? <RiEdit2Fill/>}
+                        </IconContext.Provider>
+                    </button>
+                </div>
+            ) : null} */}
         </div>
     )
 }
