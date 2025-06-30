@@ -5,7 +5,7 @@ import { IconContext } from 'react-icons/lib';
 // import styles from './formik.module.css';
 
 // TODO... rename errorClass to errorDisplayClass
-interface TextInputProps extends ComponentProps<"input"> {
+export interface TextInputProps extends ComponentProps<"input"> {
     label?: string 
     labelText?: string
     id?: string
