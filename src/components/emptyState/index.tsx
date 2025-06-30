@@ -1,4 +1,4 @@
-import React from "react";
+'use client'
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { AiOutlineReload } from 'react-icons/ai';

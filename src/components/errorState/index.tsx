@@ -1,3 +1,4 @@
+'use client'
 import { StaticImageData } from "next/image";
 import EmptyState, {  ReloadButton } from "../emptyState";
 import failureImage from '@/images/error/error2.png';
