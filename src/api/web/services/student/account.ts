@@ -13,6 +13,16 @@ const studentAccountService = {
         }
     },
 
+    async updatePassword(accountId: Types.ObjectId | string, newPassword: string) { 
+        try {
+            const student = await studentAccountDbInterface.updatePassword(accountId, newPassword);
+            return student;
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
+    },
+
     async getAccountByRegNo(regNo: string) {
         try {
             const studentAccount = await studentAccountDbInterface.getAccountByRegNo(regNo);
@@ -26,6 +36,16 @@ const studentAccountService = {
     async getAccountById(id: Types.ObjectId | string) {
         try {
             const studentAccount = await studentAccountDbInterface.getAccountById(id);
+            return studentAccount;
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
+    },
+
+    async getAccountByStudentId(studentId: Types.ObjectId | string) {
+        try {
+            const studentAccount = await studentAccountDbInterface.getAccountByStudentId(studentId);
             return studentAccount;
         } catch (err) {
             console.error(err);
