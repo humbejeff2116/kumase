@@ -180,10 +180,10 @@ class Controller {
         }
     }
 
-        async logOut(
-            req: NextRequest,
-            { params }: { params: Promise<{ id: string }> },
-        ) {
+    async logOut(
+        req: NextRequest,
+        { params }: { params: Promise<{ id: string }> },
+    ) {
         try {
             const studentId = (await params).id;
 
@@ -297,10 +297,56 @@ class Controller {
                 message: 'user gotten successfully',
             }
             return NextResponse.json(response, {status: 200});
-            return;
         } catch (err) {
             console.error(err);
-            handleUserException(new Response(), 500, true, "Error occured while getting user", err);
+            handleUserException(new NextResponse(), 500, true, "Error occured while getting user", err);
+        } 
+    }
+
+    async updateAccountPass(
+        req: NextRequest, 
+        { params }: { params: Promise<{ studentId: string, accountId: string }> },
+    ) {
+        try {
+
+            const studentId = (await params).studentId;
+            // const accountId = (await params).accountId;
+            const body = await req.json();
+            let response: ResponseJSON;
+            const account = await studentAccountService.getAccountByStudentId(studentId);
+
+            if (!account) {
+                response = {
+                    status: 200,
+                    data: null,
+                    error: false,
+                    message: 'no user found',
+                }
+                return NextResponse.json(response, {status: 200});
+            }
+            const { error, match:isValidPassword } = await studentAccountService.checkAccountPassword(body.oldPassword, account);
+
+            if (!isValidPassword) {
+                response = {
+                    status: 200,
+                    // data: user,
+                    error: false,
+                    message: 'Old password does not match',
+                }
+                return NextResponse.json(response, {status: 200});
+            }
+            await studentAccountService.updatePassword(account._id, body.newPassword)
+            
+            response = {
+                status: 200,
+                // data: user,
+                error: false,
+                message: 'user gotten successfully',
+            }
+            return NextResponse.json(response, {status: 200});
+        } catch (err) {
+            console.error(err);
+            handleUserException(new NextResponse(), 500, true, "Error occured while getting user", err);
         } 
     }
 }
