@@ -1,7 +1,7 @@
 import { IconContext } from 'react-icons';
 import { FiActivity, FiArrowLeft } from 'react-icons/fi';
 import styles from './index.module.css';
-import { BiWallet } from 'react-icons/bi';
+import { BiSolidUser, BiWallet } from 'react-icons/bi';
 
 export const tabs = {
     profile: 'profile',
@@ -25,10 +25,10 @@ export default function Tab({
                 onClick={() => handleSetTab(profile)}
                 >
                     <IconContext.Provider value={{className: styles.icon}}>
-                        <BiWallet/>
+                        <BiSolidUser/>
                     </IconContext.Provider>
                 </button>
-                <button 
+                {/* <button 
                 title={activity} 
                 className={`${styles.button} ${activeTab === activity && styles.isActive}`}
                 onClick={() => handleSetTab(activity)}
@@ -36,7 +36,7 @@ export default function Tab({
                     <IconContext.Provider value={{className: styles.icon}}>
                         <FiActivity/>
                     </IconContext.Provider>
-                </button>
+                </button> */}
             </div>
         </div>
     )
