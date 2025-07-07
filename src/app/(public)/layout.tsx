@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { CourseFormLayout, MainLayout, PublicLayout } from '@/components/layout';
+import AdminLayoutComp from "@/components/layout/admin";
 // import "../globals.css";
 
 // const geistSans = localFont({
@@ -62,9 +63,9 @@ export function AdminLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <PublicLayout dontShowFooter>
+        <AdminLayoutComp>
             {children}
-        </PublicLayout>
+        </AdminLayoutComp>
     );
 }
 
