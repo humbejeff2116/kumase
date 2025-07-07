@@ -1,7 +1,8 @@
 // import { Request, Response } from 'express';
+import fs from 'node:fs';
 import { uploadimageToCDN } from '../../lib/cdn';
 import { ResponseJSON } from '../../lib/responses';
-import { imageDataUri, profileImagePath } from '../../lib/multer';
+import { imageDataUri, multerUploads, profileImageFolder } from '../../lib/multer';
 import path from 'node:path';
 import { 
     // authenticateTokenWithSession, 
@@ -23,10 +24,10 @@ const { handleUserException } = logs;
 class Controller {
     async updateProfileImage (
         req: any, 
-        { params }: { params: Promise<{ accountId: string, studentId: string }> },
+        { params }: { params: Promise<{ id: string }> },
     ) {
-        const userId = (await params).accountId;
-        const studentId = (await params).studentId;
+        // const userId = (await params).accountId;
+        const studentId = (await params).id;
         const profileImage = req.file;
 
         console.log('profile image', profileImage)
@@ -44,19 +45,19 @@ class Controller {
         try {
 
             // move functionality to authenticate middleWare
-            if (!await studentAccountService.accountExist(userId, 'id')) {
-                const response: ResponseJSON = {
-                    status: 400,
-                    error: true,
-                    message: "No user found",
-                    data: null
-                }
-                return NextResponse.json(response, {status: 400});
-            }
+            // if (!await studentAccountService.accountExist(userId, 'id')) {
+            //     const response: ResponseJSON = {
+            //         status: 400,
+            //         error: true,
+            //         message: "No user found",
+            //         data: null
+            //     }
+            //     return NextResponse.json(response, {status: 400});
+            // }
 
             const user = await studentService.updateProfileImage(
                 studentId, 
-                path.join(profileImagePath, profileImage.filename)
+                path.join(profileImageFolder, profileImage.filename)
             );
 
             const { status, error, data } = user;
@@ -78,22 +79,22 @@ class Controller {
 
     async getProfileImage(
         req: NextRequest, 
-        { params }: { params: Promise<{ accountId: string, studentId: string }> },
+        { params }: { params: Promise<{ id: string }> },
     ) {
-        const  studentAccountId = (await params).accountId;
-        const studentId = (await params).accountId;
+        // const  studentAccountId = (await params).accountId;
+        const studentId = (await params).id;
         try {
 
             // TODO... move this functionality to middleware run on all routes called by students
-            if (!await studentAccountService.accountExist(studentAccountId, 'id')) {
-                const response: ResponseJSON = {
-                    status: 400,
-                    error: true,
-                    message: "No user found",
-                    data: null
-                }
-                return NextResponse.json(response, {status: 400});
-            }
+            // if (!await studentAccountService.accountExist(studentAccountId, 'id')) {
+            //     const response: ResponseJSON = {
+            //         status: 400,
+            //         error: true,
+            //         message: "No user found",
+            //         data: null
+            //     }
+            //     return NextResponse.json(response, {status: 400});
+            // }
             studentService.getProfileImage(studentId, new NextResponse())
             return;
         } catch (err) {
@@ -387,6 +388,49 @@ class Controller {
             return NextResponse.json({message: 'internal server error'}, {status: 500});
             // handleUserException(new NextResponse(), 500, true, "Error occured while authenticating reg course", err);
         } 
+    }
+
+    async uploadProfileImage(  
+        req: NextRequest,
+        { params }: { params: Promise<{id: string }> }
+    ) {
+        const studentId = (await params).id;
+
+        return new Promise((res, rej) => {
+            multerUploads.single('profileImage')(req as any, {} as any, async (err: any) => { 
+
+                if (err) {
+                    return rej(NextResponse.json({ message: "Error uploading profile image" }, {status: 400}));
+                }
+
+                const file = (req as any).file; // Access the uploaded file
+
+                if (!file) {
+                    return rej(NextResponse.json({ message: "No file uploaded" }, {status: 400}));
+                }
+
+                const student = await studentService.getStudentById(studentId);
+                
+                if (student) {
+                    const profileImage = student.profileImage;
+    
+                    if (profileImage && fs.existsSync(profileImage)) {
+                        fs.unlink(profileImage, err => {
+                            if (err) throw err;
+                            console.log('file removed successfully', profileImage)
+                        })     
+                    }
+
+                    // Here you can save the file path or perform other actions
+                    await studentService.updateProfileImage(
+                        studentId, 
+                        path.join(profileImageFolder, file.filename)
+                    );
+
+                    res(NextResponse.json({message: "Image uploaded successfully", file}, {status: 200}));
+                }
+            });
+        });
     }
 }
 
