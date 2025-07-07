@@ -10,32 +10,17 @@ import { studentService } from '../../services/student';
 
 
 const datauri = new DataURI();
-const fileDestination = path.join('public', 'images', 'profile');
-const profileImagePath = path.join('images', 'profile');
+const profileImageFolder = path.join('images', 'profile');
+const fileDestination = path.join('public', profileImageFolder);
+
 
 const storage = multer.diskStorage({
     destination: async function (req: Request, file: any, cb: (arg0: null, arg1: string) => void) {
-        const { userId } = req.params;
-        
         try {
             if (!fs.existsSync(fileDestination)) {
                 fs.mkdirSync(fileDestination, { recursive: true })     
             }
-
-            const user = await studentService.getStudentById(userId);
-
-            if (user) {
-                const profileImagePath = user.profileImage;
-
-                if (profileImagePath && fs.existsSync(profileImagePath)) {
-                    fs.unlink(profileImagePath, err => {
-                        if (err) throw err;
-                        return cb(null, fileDestination);
-                    })     
-                } else {
-                    return cb(null, fileDestination);
-                }
-            }
+            return cb(null, fileDestination);
         } catch (err) {
             throw err;
         }
@@ -47,7 +32,7 @@ const storage = multer.diskStorage({
     }
 })
 
-const multerUploads = multer({ storage }).single('profileImage');
+const multerUploads = multer({ storage });
 
 /**
  * @param {Object} req
@@ -62,5 +47,5 @@ const imageDataUri = (req: { body?: any; file: any; }) => {
 export { 
     multerUploads, 
     imageDataUri,
-    profileImagePath
+    profileImageFolder
 }
