@@ -3,6 +3,7 @@
 
 
 const basePath = '/student/portal';
+const adminBasePath = '/admin';
 const appRoutes = {
     index: '/',
     about: `/about`,
@@ -23,6 +24,13 @@ const appRoutes = {
     courseForm: `${basePath}/course-form`,
     courseReg: `${basePath}/course-reg`,
     account: `${basePath}/account`,
+
+    admin: {
+        signIn: `${adminBasePath}/sign-in`,
+        signOut: `${adminBasePath}/sign-out`,
+        dashboard: `${adminBasePath}/dashboard`,
+        studentTokens: `${adminBasePath}/tokens`
+    }
 }
 
 export default appRoutes;

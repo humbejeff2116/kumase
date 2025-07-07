@@ -1,3 +1,4 @@
+import AdminLayoutComp from "@/components/layout/admin";
 import appRoutes from "@/routes";
 import { IconContext } from "react-icons";
 import { BiCog, BiHome } from "react-icons/bi";
@@ -17,6 +18,7 @@ import {
     RiUser3Line, 
     RiMapPin2Line,
     RiFolderSettingsLine,
+    RiDashboard2Line,
 } from "react-icons/ri";
 
 export interface NavLink {
@@ -30,10 +32,9 @@ export type NavLinksType = Array<NavLink>;
 export interface Links {
     protectedMain: NavLinksType
     publicMain: NavLinksType
-
+    admin: NavLinksType 
     sideNav: NavLinksType
     sideNavFooter: NavLinksType
-
     publicSocialLinks: NavLinksType,
 }
 
@@ -53,6 +54,11 @@ export const linkNames = {
         courses: "Courses",
         contact: "Contact",
     },
+    admin: {
+        dashboard: 'Dashboard',
+        login: 'Sign In',
+        tokens: 'Student Tokens'
+    }
 }
 
 export const linksRequireStudentId = [
@@ -63,6 +69,29 @@ export const linksRequireStudentId = [
 ]
 
 export const publicLinks = {
+    admin: [
+        {
+            name: linkNames.admin.dashboard,
+            icon: (
+                <RiDashboard2Line/>
+            ),
+            href: appRoutes.admin.dashboard
+        },
+        // {
+        //     name: linkNames.admin.login,
+        //     icon: (
+        //         <RiUser3Line/>
+        //     ),
+        //     href: appRoutes.admin.signIn
+        // },
+        {
+            name: linkNames.admin.tokens,
+            icon: (
+                <RiFolderSettingsLine/>
+            ),
+            href: appRoutes.admin.studentTokens
+        },
+    ],
     sideNav: [
         {
             name: linkNames.private.home,
@@ -235,6 +264,9 @@ class LinksService {
     }
     getPublicSocialLinks() {
         return this.data.publicSocialLinks;
+    }
+    getAdminLinks() {
+        return this.data.admin;
     }
 }
 
