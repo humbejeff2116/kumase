@@ -1,4 +1,4 @@
-import { API_DOMAIN, backendAPI } from './http.config';
+import { API_DOMAIN, backendAPI, backendAPIV2 } from './http.config';
 
 
 interface LoginDetails {
@@ -145,6 +145,13 @@ async function getSchool() {
     return response.data;
 }
 
+async function getSchoolV2() {
+    const response = await backendAPIV2.get(`/school`);
+    return response.data;
+}
+
+backendAPIV2
+
 
 export {
     loginUser,
@@ -158,5 +165,6 @@ export {
     authenticateCourseReg,
     getStudentsSlugs,
     getStudent,
-    getSchool
+    getSchool,
+    getSchoolV2
 }
