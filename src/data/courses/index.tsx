@@ -5,6 +5,14 @@ import defaultIllustration from '@/images/illustration/freepick/med-students-2.s
 import pharmacyCoursesService from "./pharmacy";
 
 
+import img1 from '@/images/courses/img_1.jpg';
+import img2 from '@/images/courses/img_2.jpg';
+import img3 from '@/images/courses/img_3.jpg';
+import img4 from '@/images/courses/img_4.jpg';
+import img5 from '@/images/courses/img_5.jpg';
+import img6 from '@/images/courses/img_6.jpg';
+import img7 from '@/images/courses/img_7.jpg';
+
 
 
 export const departments = {
@@ -53,7 +61,7 @@ const courses: Courses = [
                             Biology or Health Science and Physics at not more than 2 
                             sittings.`,
         certificateType: 'ND IN COMMUNITY HEALTH EXTENSION WORKER',
-        image: defaultIllustration
+        image: img1
     },
     {
         id: '2',
@@ -66,7 +74,7 @@ const courses: Courses = [
                             Biology or Health Science and Physics at not more than 2 
                             sittings.`,
         certificateType: 'ND IN MEDICAL LABORATORY SCIENCE',
-        image: defaultIllustration
+        image: img5
     },
     
     {
@@ -80,7 +88,7 @@ const courses: Courses = [
                             Biology or Health Science and Physics at not more than 2 
                             sittings.`,
         certificateType: 'HND IN ENVIRONMENTAL HEALTH TECHNOLOGY',
-        image: defaultIllustration
+        image: img3
     },
     {
         id: '4',
@@ -93,7 +101,7 @@ const courses: Courses = [
                             Biology or Health Science and Physics at not more than 2 
                             sittings.`,
         certificateType: 'ND/HND',
-        image: defaultIllustration
+        image: img4
     },
 
     {
@@ -107,7 +115,7 @@ const courses: Courses = [
                             Biology or Health Science and Physics at not more than 2 
                             sittings.`,
         certificateType: 'ND/HND',
-        image: defaultIllustration
+        image: img5
     },
     {
         id: '6',
@@ -120,7 +128,7 @@ const courses: Courses = [
                     an any other science subject at not more than 2 sittings. 
                     Or Teacher Grade II at merit`,
         certificateType: 'DIPLOMA IN HEALTH EDUCATION AND PROMOTION',
-        image: defaultIllustration
+        image: img6
     },
     {
         id: '7',
@@ -132,7 +140,7 @@ const courses: Courses = [
                             NABTEB in English, Mathematics, Biology, Chemistry and Physics 
                             at not more than two sittings.`,
         certificateType: `ND IN PUBLIC HEALTH NURSING`,
-        image: defaultIllustration
+        image: img7
     },
     {
         id: '8',
@@ -145,7 +153,7 @@ const courses: Courses = [
                     and any other subjects
                     at not more than 2 sittings. Or Teacher Grade II at merit.`,
         certificateType: 'ND IN HEALTH INFORMATION MANAGEMENT',
-        image: defaultIllustration
+        image: img2
     },
     {
         id: '9',
@@ -158,7 +166,7 @@ const courses: Courses = [
                         Biology or Health Science and Physics at not more than 2 
                         sittings.`,
         certificateType: 'Diploma in X-ray',
-        image: defaultIllustration
+        image: img4
     },
     {
         id: '10',
@@ -170,7 +178,7 @@ const courses: Courses = [
                     in Biology, English Language, Mathematics, 
                     Chemistry/Physics at not more than 2 sittings.`,
         certificateType: 'Diploma',
-        image: defaultIllustration
+        image: img3
     }
 ]
 
