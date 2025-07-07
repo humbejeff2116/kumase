@@ -7,8 +7,13 @@ import defaultIllustration from '@/images/illustration/freepick/13297215_5182546
 import Image from 'next/image';
 
 
+interface CurrentSessionProps {
+    rightChild?: React.ReactNode
+}
 
-export default function CurrentSession() {
+export default function CurrentSession({
+    rightChild
+}: CurrentSessionProps) {
     const { school } = useCollegeContext();
     return (
         <div className={styles.container}>
@@ -27,7 +32,7 @@ export default function CurrentSession() {
                     />
                 </div>
                 <div className={styles.right}>
-                    <Image src={defaultIllustration} alt=''/>                
+                    {rightChild ?? <Image src={defaultIllustration} alt=''/>}                  
                 </div>
             </div>
         </div>
