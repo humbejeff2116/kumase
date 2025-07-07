@@ -1,7 +1,7 @@
 // import { Request, Response } from 'express';
 import { uploadimageToCDN } from '../../lib/cdn';
 import { ResponseJSON } from '../../lib/responses';
-import { imageDataUri, profileImagePath } from '../../lib/multer';
+// import { imageDataUri, profileImageFolder } from '../../lib/multer';
 import path from 'node:path';
 import { 
     // authenticateTokenWithSession, 
