@@ -5,34 +5,42 @@ import styles from './index.module.css';
 import useAuth from '@/context/auth/context';
 
 const links = linksService.getSideNavLinks();
+const adminLinks = linksService.getAdminLinks();
 
-export default function MiddleLeftSideBar() {
+interface MiddleLeftSideBarProps {
+    useInAdmin?: boolean
+}
+
+export default function MiddleLeftSideBar({
+    useInAdmin
+}: MiddleLeftSideBarProps) {
     const { student } = useAuth();
 
     return (
         <div className={styles.container}>
-            {/* {student && (
-                (() => {
-                    return <></>
-                })()
-            )} */}
-        {links.map((link, i) => {
-            if (linksRequireStudentId.includes(link.name)) {
-                const newHref = `${link.href}/${student && encodeURIComponent(student.id || student._id)}`;
-
-                return (
-                    <NavigationLink 
-                    key={i} 
-                    {...link}
-                    href={newHref}
-                    />
+            {useInAdmin ? (
+                adminLinks.map((link, i) =>
+                    <NavigationLink key={i} {...link}/>
                 )
-            }
+            ) : (
+                links.map((link, i) => {
+                    if (linksRequireStudentId.includes(link.name)) {
+                        const newHref = `${link.href}/${student && encodeURIComponent(student.id || student._id)}`;
 
-            return (
-                <NavigationLink key={i} {...link}/>
-            )
-        })}
+                        return (
+                            <NavigationLink 
+                            key={i} 
+                            {...link}
+                            href={newHref}
+                            />
+                        )
+                    }
+
+                    return (
+                        <NavigationLink key={i} {...link}/>
+                    )
+                })
+            )}
         </div>
     )
 }
