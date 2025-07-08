@@ -234,9 +234,9 @@ export default function SchoolData() {
                     <div>
                     <p className="font-medium">Departments</p>
                     <p>
-                        {selectedDepartment === 'all'
-                        ? currentSchool.departments.total
-                        : '1'}
+                        {selectedDepartment === 'all' ? 
+                        currentSchool.departments.total : 
+                        '1'}
                     </p>
                     </div>
                 </div>
@@ -245,31 +245,31 @@ export default function SchoolData() {
             <section className="grid md:grid-cols-2 gap-6">
                 <ChartCard title="Students Per Department">
                     <Tabs defaultValue="donut" className="w-full">
-                    <TabsList>
-                        <TabsTrigger value="donut">Donut</TabsTrigger>
-                        <TabsTrigger value="bar">Bar</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="donut">
-                        <DonutChart data={departmentChartData} title="Department Donut" />
-                    </TabsContent>
-                    <TabsContent value="bar">
-                        <BarChartComponent data={departmentChartData} title="Department Bar" />
-                    </TabsContent>
+                        <TabsList>
+                            <TabsTrigger value="donut">Donut</TabsTrigger>
+                            <TabsTrigger value="bar">Bar</TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="donut">
+                            <DonutChart data={departmentChartData} title="Department Donut" />
+                        </TabsContent>
+                        <TabsContent value="bar">
+                            <BarChartComponent data={departmentChartData} title="Department Bar" />
+                        </TabsContent>
                     </Tabs>
                 </ChartCard>
 
                 <ChartCard title="Students Per Level">
-                    <Tabs defaultValue="donut" className="w-full">
-                    <TabsList>
-                        <TabsTrigger value="donut">Donut</TabsTrigger>
-                        <TabsTrigger value="bar">Bar</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="donut">
-                        <DonutChart data={levelChartData} title="Level Donut" />
-                    </TabsContent>
-                    <TabsContent value="bar">
-                        <BarChartComponent data={levelChartData} title="Level Bar" />
-                    </TabsContent>
+                    <Tabs defaultValue="bar" className="w-full">
+                        <TabsList>
+                            <TabsTrigger value="donut">Donut</TabsTrigger>
+                            <TabsTrigger value="bar">Bar</TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="donut">
+                            <DonutChart data={levelChartData} title="Level Donut" />
+                        </TabsContent>
+                        <TabsContent value="bar">
+                            <BarChartComponent data={levelChartData} title="Level Bar" />
+                        </TabsContent>
                     </Tabs>
                 </ChartCard>
             </section>
