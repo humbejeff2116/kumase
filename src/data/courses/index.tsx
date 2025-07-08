@@ -10,7 +10,7 @@ import img2 from '@/images/courses/img_2.jpg';
 import img3 from '@/images/courses/img_3.jpg';
 import img4 from '@/images/courses/img_4.jpg';
 import img5 from '@/images/courses/img_5.jpg';
-import img6 from '@/images/courses/img_6.jpg';
+// import img6 from '@/images/courses/img_6.jpg';
 import img7 from '@/images/courses/img_7.jpg';
 
 
@@ -128,7 +128,7 @@ const courses: Courses = [
                     an any other science subject at not more than 2 sittings. 
                     Or Teacher Grade II at merit`,
         certificateType: 'DIPLOMA IN HEALTH EDUCATION AND PROMOTION',
-        image: img6
+        image: img2
     },
     {
         id: '7',
