@@ -11,7 +11,7 @@ import Gallery from '@/components/gridGallery';
 
 
 export default function Explore() {
-    const [activeTab, setActiveTab] = useState(tabs.school);
+    const [activeTab, setActiveTab] = useState(tabs.reviews);
     const [showModal, setShowModal] = useState(false);
     const [showModalChild, setShowModalChild] = useState(false);
 
