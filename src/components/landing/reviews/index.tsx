@@ -39,7 +39,7 @@ const reviews = [
     },
     {
         id:"2",
-        name: "Prince Million",
+        name: "Shenge Terese Samuel",
         school: "Kumase College of Health Technology, Markudi, Benue State.",
         location: 'Earth', 
         imageSrc: "",
@@ -49,7 +49,7 @@ const reviews = [
     },
     {
         id:"3",
-        name: "Reign-el Mukoro",
+        name: "Usman Saadatu Linda",
         school: "Kumase College of Health Technology, Markudi, Benue State.",
         location: 'Earth', 
         imageSrc: "",
