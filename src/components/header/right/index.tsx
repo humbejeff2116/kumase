@@ -57,7 +57,8 @@ function HeaderLink({
     return (
         <>
         {name.toLocaleLowerCase() === "notification" ? (
-            <NotificationLink className={`${linkClassName} ${styles.notificationLink}`} {...{ name, href, icon}}/>
+            null
+            // <NotificationLink className={`${linkClassName} ${styles.notificationLink}`} {...{ name, href, icon}}/>
         ) : (
             <div className={styles.linkWrapper}>
                 <Link 
