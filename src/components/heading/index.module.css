@@ -63,3 +63,9 @@
     font-size: 1.3rem;
     margin-left: 0.7rem;
 }
+
+@media print {
+    .headerWrapper {
+        display: none;
+    }
+}
