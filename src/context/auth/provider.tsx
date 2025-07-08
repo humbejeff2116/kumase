@@ -78,6 +78,7 @@ export function AuthContextProvider({children}: AuthContextProviderProps) {
 
     const logOutClient = async () => {
         setUser(null);
+        setStudent(null);
         setUserIsLoggedIn(false);
         setOutsidePopUp(defaultOutsidePopupMessage);
         setViewUserProfileData({});
@@ -88,6 +89,7 @@ export function AuthContextProvider({children}: AuthContextProviderProps) {
         localStorage.removeItem(TOKEN);
         localStorage.removeItem(TOKEN_EXPIRATION);
         sessionStorage.removeItem('currentLocation');
+        return true;
     }
 
     const setOutsidePopUpMessage = (showMessage: boolean, popUpMessage?: OutSidePopupMessage) => {

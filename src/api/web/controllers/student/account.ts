@@ -20,6 +20,7 @@ import { cookies } from 'next/headers.js';
 const { handleUserException } = logs;
 
 
+const loginCookieName = "loginCookie";
 class Controller {
     async signUp(req: NextRequest) {
         // Parse the request body
@@ -159,10 +160,10 @@ class Controller {
             const cookieStore = await cookies();
 
             cookieStore.set({
-                name: "loginCookie",
+                name: loginCookieName,
                 value: userCookie,
                 httpOnly: true,
-                path: '/'
+                // path: '/'
             })
 
             // nextResponse.cookies.set({
@@ -187,6 +188,8 @@ class Controller {
         try {
             const studentId = (await params).id;
 
+            // console.log("student id --logut", studentId);
+
             if (!studentId) {
                 const response = {
                     status: 403,
@@ -207,7 +210,7 @@ class Controller {
             }
 
             const cookieStore = await cookies();
-            const cookie = cookieStore.get("loginCokie")?.value;
+            const cookie = cookieStore.get(loginCookieName)?.value;
 
             if (!cookie) {
                 const response = {
@@ -218,17 +221,19 @@ class Controller {
                 return NextResponse.json(response, {status: response.status});
             }
 
-            cookieStore.delete("loginCookie");
+            cookieStore.delete(loginCookieName);
 
             const response = {
                 status: 200,
                 authenticated: true,
                 message: 'Log out successful'
             }
+            
             return NextResponse.json(response, {status: 200});
         } catch (err) {
             console.error(err);
-            handleUserException(new NextResponse(), 200, true, "Error occured while authenticating user token", err);
+            return NextResponse.json({message: "Internal server error"}, {status: 500});
+            // handleUserException(new NextResponse(), 200, true, "Error occured while authenticating user token", err);
         }
     }
 

@@ -15,6 +15,7 @@ export default function _Logout() {
     const [error, setError] = useState(false);
     const { logOutClient, student } = useAuth();
     const router = useRouter();
+    let timer: Timer = null;
 
     useEffect(() => {
         const logOutUser = async (studentId: string) => {
@@ -24,14 +25,21 @@ export default function _Logout() {
             try {
                 await logoutStudentAccount(studentId);
                 await logOutClient();
-                router.push(appRoutes.signIn);
+                timer = setTimeout(() => router.push(appRoutes.signIn), 2000); 
+                
             } catch (error) {
                 setError(true);
             }
         }
 
         if (student) {
-            logOutUser(student.id);
+            logOutUser(student.id || student._id);     
+        }
+
+        return () => {
+            if (timer) {
+                clearTimeout(timer);
+            }
         }
     }, [logOutClient, student, router]);
   
