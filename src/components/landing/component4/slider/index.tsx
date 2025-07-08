@@ -66,7 +66,7 @@ export default function Slider() {
             modules={[Navigation, Scrollbar, A11y, EffectFade, Pagination, Autoplay]}
             slidesPerView={1}
             spaceBetween={15}
-            autoplay={{ delay: 6000 }}
+            autoplay={{ delay: 3000 }}
             pagination={{ clickable: true }}
             onSlideChange={() => setSliderChange(prevState => {
                 return prevState === 10 ? 0 : prevState + 1
