@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "lint": "npx eslint . --ext .ts",
-    "prebuildd": "rimraf ./build_script && tsc --project tsconfig.script.json && node build_script/script.js",
+    "prebuild": "rimraf ./build_script && tsc --project tsconfig.script.json && node build_script/script.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
